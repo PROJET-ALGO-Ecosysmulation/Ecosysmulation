@@ -1,6 +1,4 @@
 # Ecosysmulation
-je crois avoir compris comment ça marche
-
 public abstract class EtreVivant {
 	
     public int dureeVie;
