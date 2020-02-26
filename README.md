@@ -1,13 +1,27 @@
 # Ecosysmulation
-public abstract class EtreVivant {
+public class Animal extends EtreVivant{
 	
-    public int dureeVie;
-    public int fecondite;
+    private String nom;
+    private int Allele1;
+    private int Allele2;
+    private int Allele3;
     
-	public EtreVivant(int d, int f) {
-		dureeVie=d;
-        fecondite=f;
+	public Animal (String n, int A1, int A2, int A3, int d, int f) {
+		super(d,f);
+        nom=n;
+        Allele1=A1;
+        Allele2=A2;
+        Allele3=A3;
 	}
     
-    //public abstract boolean peutSeDeplacer();
+    public int DeriveGenetique (int a1, int a2, int a3){
+        int sum = 0;
+        while (sum==0){
+            int a=(int)Math.random();
+            int b=(int)Math.random();
+            int c=(int)Math.random();
+            sum = a+b+c;
+        }
+        return sum;
+    }
 }
