@@ -2,7 +2,7 @@
 public class TestRenard {
 	
 	public static void main (String[] args) {
-		Animal Renard = new Animal("renard1",8,7);
+		Animal Renard = new Animal("renard1",8,7,0.9);
         int nbAnnées=3; //nombre itération
         int [] popRenard = {100,21,14,15,17,13,17,14}; //initialisation population de base| à faire générer aléatoirement 
        
@@ -11,6 +11,8 @@ public class TestRenard {
             System.out.print(popRenard[k]);
             System.out.print("|");
         } 
+        
+        //double coefmort=0.9;//dépend du paramètre de mort
         
        
         for(int i=0; i<nbAnnées;  i++){
@@ -35,7 +37,9 @@ public class TestRenard {
             popRenard[0]=nbCouple*6; //remplacement tableau pour nouvelle génération Z
             for(int h=2; h<popRenard.length; h++){
                 b=popRenard[h];
-                popRenard[h]=a;
+                double m= a*Renard.getc();
+                int mo=(int)m;
+                popRenard[h]=mo;//modifier ici pour que tous les renards ne survivent pas
                 a=b;
             }
             
@@ -50,4 +54,3 @@ public class TestRenard {
         
 	}
 }
-
