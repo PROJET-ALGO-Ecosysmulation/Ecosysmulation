@@ -2,16 +2,16 @@
 public class Animal extends EtreVivant{
 	
     private String nom;
-    private int Allele1;
+    /*private int Allele1;
     private int Allele2;
-    private int Allele3;
+    private int Allele3;*/
     
-	public Animal (String n, int A1, int A2, int A3, int d, int f) {
-		super(d,f);
+	public Animal (String n,/* int A1, int A2, int A3,*/ int d, int f, double c) {
+		super(d,f,c);
         nom=n;
-        Allele1=A1;
-        Allele2=A2;
-        Allele3=A3;
+        //Allele1=A1;
+       // Allele2=A2;
+        //Allele3=A3;
 	}
     
     public int DeriveGenetique (int a1, int a2, int a3){
@@ -23,5 +23,9 @@ public class Animal extends EtreVivant{
             sum = a+b+c;
         }
         return sum;
+    }
+    
+    public double getc(){
+        return getmort();
     }
 }
