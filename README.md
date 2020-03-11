@@ -1,11 +1,11 @@
 # Ecosysmulation
 public class Animal extends EtreVivant{
 
-private String nom;
-/*private int Allele1;
-private int Allele2;
-private int Allele3;*/
-private int [] popAnimal;
+	private String nom;
+	/*private int Allele1;
+	private int Allele2;
+	private int Allele3;*/
+	private int [] popAnimal;
 
 
 	public Animal (String n,/* int A1, int A2, int A3,*/ int d, int f, double c) {
@@ -26,42 +26,42 @@ private int [] popAnimal;
         
 	}
 
-public int DeriveGenetique (int a1, int a2, int a3){
-    int sum = 0;
-    while (sum==0){
-        int a=(int)Math.random();
-        int b=(int)Math.random();
-        int c=(int)Math.random();
-        sum = a+b+c;
-    }
-    return sum;
-}
+	public int DeriveGenetique (int a1, int a2, int a3){
+	    int sum = 0;
+	    while (sum==0){
+		int a=(int)Math.random();
+		int b=(int)Math.random();
+		int c=(int)Math.random();
+		sum = a+b+c;
+	    }
+    	return sum;
+	}
 
-public double getc(){
-    return getmort();
-}
+	public double getc(){
+	    return getmort();
+	}
 
-public int SurvieBebe (){
-	double res = popAnimal[0]*0.2;
-	int bbsurvie = (int)res;
+	public int SurvieBebe (){
+		double res = popAnimal[0]*0.2;
+		int bbsurvie = (int)res;
         
 	return bbsurvie;
-}
+	}
 
-public int NbAnimauxReproducteurs (){
-	int sumAnAd = 0;//Animaux pouvant s'accoupler
-        
-    for(int j=1; j<popAnimal.length; j++){
-            sumAnAd += popAnimal[j];
-    }
-    
-    double conv = sumAnAd*0.5;
-    int nbAnRep = (int)conv; //coef à modifier en fonction du pourcentage de femelles
-   
-    return nbAnRep; 
-}
+	public int NbAnimauxReproducteurs (){
+		int sumAnAd = 0;//Animaux pouvant s'accoupler
 
-public void changeGeneration () {
+	    for(int j=1; j<popAnimal.length; j++){
+		    sumAnAd += popAnimal[j];
+	    }
+
+	    double conv = sumAnAd*0.5;
+	    int nbAnRep = (int)conv; //coef à modifier en fonction du pourcentage de femelles
+
+	    return nbAnRep; 
+	}
+
+	public void changeGeneration () {
 	
 	//popAnimal[0]=fecondite.EtreVivant*NbAnimauxReproducteurs();//PROBLEME
 	
@@ -76,17 +76,14 @@ public void changeGeneration () {
             a=b;
         }
 	
-}
+	}
 
 
-public int NbTotalAnimaux () {
-	int nbtotAn=0;
-	
+	public int NbTotalAnimaux () {
+		int nbtotAn=0;
+
 	//à compléter
 	return nbtotAn;
-}
-
-
-
-}
-
+	}
+	
+	}
