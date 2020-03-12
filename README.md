@@ -82,7 +82,10 @@ public class Animal extends EtreVivant{
 	public int NbTotalAnimaux () {
 		int nbtotAn=0;
 
-	//à compléter
+	for(int j=0; j<popAnimal.length; j++){
+		    nbtotAn += popAnimal[j];
+	    }
+	    
 	return nbtotAn;
 	}
 	
