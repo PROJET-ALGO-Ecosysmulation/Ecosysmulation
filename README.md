@@ -37,8 +37,8 @@ public class Animal extends EtreVivant{
     	return sum;
 	}
 
-	public double getc(){
-	    return getmort();
+	public double getmort(){
+	    return super.getmort();
 	}
 
 	public int SurvieBebe (){
@@ -63,14 +63,14 @@ public class Animal extends EtreVivant{
 
 	public void changeGeneration () {
 	
-	//popAnimal[0]=fecondite.EtreVivant*NbAnimauxReproducteurs();//PROBLEME
+	//popAnimal[0]=super.getfecondite()*NbAnimauxReproducteurs();//à tester
 	
 	        int a=popAnimal[1];
 	        int b=1;
 	        
 	        for(int h=2; h<popAnimal.length; h++){
             b=popAnimal[h];
-            double m= a*EtreVivant.getmort();//PROBLEME
+            double m= a*getmort();//à tester
             int mo=(int)m;
             popAnimal[h]=mo;//modifier ici pour que tous les renards ne survivent pas
             a=b;
