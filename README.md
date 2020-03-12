@@ -1,9 +1,9 @@
 # Ecosysmulation
 public abstract class EtreVivant {
 	
-    public int dureeVie;
-    public int fecondite;
-    public double coefmort;
+    private int dureeVie;
+    private int fecondite;
+    private double coefmort;
     
 	public EtreVivant(int d, int f, double c) {
 		dureeVie=d;
@@ -11,7 +11,13 @@ public abstract class EtreVivant {
         coefmort=c;
     }
     
-
+    public double getmort(){
+        return coefmort;
+    }
+    
+    public int getfecondite(){
+        return fecondite;
+    }
     
     //public abstract boolean peutSeDeplacer();
 }
