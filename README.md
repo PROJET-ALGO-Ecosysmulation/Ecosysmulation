@@ -11,9 +11,6 @@ public abstract class EtreVivant {
         coefmort=c;
     }
     
-    public double getmort(){
-        return coefmort;
-    }
 
     
     //public abstract boolean peutSeDeplacer();
