@@ -6,11 +6,13 @@ public class Animal extends EtreVivant{
 	private int Allele2;
 	private int Allele3;*/
 	private int [] popAnimal;
+	private double surv; //pourcentage survie bb
 
 
-	public Animal (String n,/* int A1, int A2, int A3,*/ int d, int f, double c) {
+	public Animal (String n,/* int A1, int A2, int A3,*/ int d, int f, double c, double s) {
 		super(d,f,c);
 		nom=n;
+		surv=s;
 		//Allele1=A1;
 	   // Allele2=A2;
 		//Allele3=A3;
@@ -46,7 +48,7 @@ public class Animal extends EtreVivant{
 	}
 
 	public int SurvieBebe (){
-		double res = popAnimal[0]*0.2;
+		double res = popAnimal[0]*surv;
 		int bbsurvie = (int)res;
         
 	return bbsurvie;
