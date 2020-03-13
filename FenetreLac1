@@ -25,19 +25,26 @@ public class FenetreLac extends JFrame implements ActionListener{
         lac.setBackground(Color.lightGray);
         monConteneur.add(lac);
         
-        //création boutons
+        //instanciation et placement boutons
         lesBoutons = new JButton[10]; 
         int indice=0;
         for(int i=0;i<5;i++){
             for(int j=0;j<2;j++){
             lesBoutons[indice]=new JButton();
-            lesBoutons[indice].setBounds(100+i*120,550+j*120,100,50); 
+            lesBoutons[indice].setBounds(100+i*180,550+j*120,120,50); 
             lesBoutons[indice].addActionListener(this);
             monConteneur.add(lesBoutons[indice]); 
+            indice++;
             }
         }
         
-        
+        //définition du libéllé (nom) des boutons
+       lesBoutons[0].setText("temperature");
+       lesBoutons[1].setText("derive");
+       lesBoutons[2].setText(" ");
+       lesBoutons[3].setText(" ");
+       lesBoutons[4].setText(" ");
+       lesBoutons[5].setText(" ");
         
         //ajout images animaux 
         JLabel affRenard = new JLabel(new ImageIcon("./renard.png"));
@@ -80,8 +87,38 @@ public class FenetreLac extends JFrame implements ActionListener{
 	}
     
     public void actionPerformed(ActionEvent e) {
+		Object source = e.getSource();
+		
+		// a chaque appui sur un bouton le nombre d'animaux est succeptible de changer
+		nombreRenards.setText(""+a);
+		nombreLoutres.setText(""+a);
+		nombreTruites.setText(""+a);
+
+		if (source == lesBoutons[0]) 
+			System.out.println("bouton 0 ok test ");
+			
+		if (source == lesBoutons[1])
+			System.out.println("bouton 1 ok test "); 
+			//actions a mettre ;
+			
+		if (source == lesBoutons[2]) 
+			System.out.println("bouton 2 ok test ");
+			//actions a mettre ;
+			
+		if (source == lesBoutons[3]) 
+			System.out.println("bouton 3 ok test ");
+			//actions a mettre ;
+			
+		if (source == lesBoutons[4]) 
+			System.out.println("bouton 4 ok test ");
+			//actions a mettre ;
+			
+		if (source == lesBoutons[5]) 
+			System.out.println("bouton 5 ok test ");
+			//actions a mettre ;					
     }
 }
+
 
 public class Lac {
 	
