@@ -108,6 +108,17 @@
 
 		return res;
 	}
+	
+	
+	public String simulGene(int nbIte){
+		String aff = new String ();
 
+		for (int i=0; i<nbIte+1;i++) {
+			aff=this.toString(i);
+			this.changeGeneration();
+			aff+="\n"; // à la ligne?
+		}
+	return aff;
+	}
 
 	}
