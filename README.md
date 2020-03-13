@@ -2,7 +2,7 @@
 	public class TestRenard {
 
 	public static void main (String[] args) {
-		Animal Renard = new Animal("Renard",8,7,0.9,0.2);
+		Animal Renard = new Animal("Renard",5,7,0.9,0.2);
 	    int nbAnnees=3; //nombre itération
 	   // int [] popRenard = {100,21,14,15,17,13,17,14}; //initialisation population de base| à faire générer aléatoirement 
 
