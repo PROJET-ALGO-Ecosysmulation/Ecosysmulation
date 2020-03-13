@@ -40,6 +40,10 @@ public class Animal extends EtreVivant{
 	public double getmort(){
 	    return super.getmort();
 	}
+	
+	public double getfecondite(){
+	    return super.getfecondite();
+	}
 
 	public int SurvieBebe (){
 		double res = popAnimal[0]*0.2;
