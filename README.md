@@ -1,5 +1,5 @@
 # Ecosysmulation
-public class TestRenard {
+	public class TestRenard {
 
 	public static void main (String[] args) {
 		Animal Renard = new Animal("Renard",8,7,0.9,0.2);
