@@ -6,11 +6,15 @@
 	    int nbAnnees=3; //nombre itération
 	   // int [] popRenard = {100,21,14,15,17,13,17,14}; //initialisation population de base| à faire générer aléatoirement 
 
+//ci-dessous affiche bien ce qu'on veut
 	   for (int i=0; i<nbAnnees+1;i++) {
 		System.out.print(Renard.toString(i));
 	    Renard.changeGeneration();
 	    System.out.println();
 		}
+		
+	// ci-dessous affiche rien	
+	Renard.simulGene(nbAnnees); 
 
 
 	  }
