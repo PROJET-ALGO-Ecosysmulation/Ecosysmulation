@@ -1,8 +1,8 @@
 # Ecosysmulation
 double ph temperature;
 
-public boulean variationPh(double p1, double p2){ // donner le pH avant et après changement -> enregistrer la p1 avant 								changement
-	if(p2=|=p1){
+public boulean variationPh(double pi, double p2){ // donner le pH avant et après changement -> enregistrer la pi (pH init) avant 								changement
+	if(p2=|=pi){
 		return true;
 	}
 }
