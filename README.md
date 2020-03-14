@@ -9,6 +9,8 @@
 	private double surv; //pourcentage survie bb
 
 
+	// Ecrire methode SurvieAnimaux avec méthode mere temperature + changer changement generation après impact temp
+
 	public Animal (String n,/* int A1, int A2, int A3,*/ int d, int f, double c, double s) {
 		super(d,f,c);
 		nom=n;
@@ -39,16 +41,9 @@
 		return sum;
 	}
 
-	public double getmort(){
-	    return super.getmort();
-	}
-
-	public int getfecondite(){
-	    return super.getfecondite();
-	}
 
 	public int SurvieBebe (){
-		double res = popAnimal[0]*surv;
+		double res = popAnimal[0]*surv*coefmort;// coefmort à mettre ou pas? comment bb peuvent être impactés aussi par paramètres ?
 		int bbsurvie = (int)res;
 
 	return bbsurvie;
@@ -67,18 +62,20 @@
 	    return nbAnRep; 
 	}
 
-	public void changeGeneration () {
+	public void changeGeneration (int temp) {
 
 			int a=popAnimal[1];
+		int b=1;
+
+		super.impactTemperature(temp);
 
 			popAnimal[1]=SurvieBebe();
-			popAnimal[0]=super.getfecondite()*NbAnimauxReproducteurs();
+			popAnimal[0]=fecondite*NbAnimauxReproducteurs();
 
-		int b=1;
 
 		for(int h=2; h<popAnimal.length; h++){
 		b=popAnimal[h];
-		double m= a*getmort();//à tester
+		double m= a*coefmort;
 		int mo=(int)m;
 		popAnimal[h]=mo;//modifier ici pour que tous les renards ne survivent pas
 		a=b;
@@ -100,7 +97,7 @@
 	public String toString(int nbIte) {
 		String res = new String();
 
-		res = "Population annee "+nbIte+" de "+nom+" : ";
+		res = "coefmort = "+coefmort+ "Population annee "+nbIte+" de "+nom+" : ";
 		   for(int j=0; j<popAnimal.length; j++){ //affiche tableau à chaque itération
 		    res += popAnimal[j];
 		    res +="|";
@@ -108,17 +105,18 @@
 
 		return res;
 	}
-	
-	
-	public String simulGene(int nbIte){
+
+	public String simulGene(int nbIte,int temp){
 		String aff = new String ();
 
 		for (int i=0; i<nbIte+1;i++) {
 			aff=this.toString(i);
-			this.changeGeneration();
+			this.changeGeneration(temp);
 			aff+="\n"; // à la ligne?
 		}
-	return aff;
+
+		return aff;
+
 	}
 
 	}
