@@ -21,3 +21,12 @@ public void impactVariapH(double p1, double p2){ //à mettre dans animaux
 double température 
 double pH
 
+// Dans animal 
+
+int nombreTotAnim=0;
+public int calculAnim(){
+	for(int i=0; i<tbl.length; i++){
+		nombreTotAnim+=tbl[i];
+	}
+}
+
