@@ -30,9 +30,10 @@ public int calculAnim(){
 	}
 }
 
-Si on fait Renard.mange(Loutre)
 
-double rapport = Loutre.nombreTotAnim/Renard.nombreTotAnim //Dans initialisation faire dans un tableau une fois que totes les pop sont initialisées??
+//Si on fait Renard.mange(Loutre)
+
+
 
 public boolean Famine (){
  if (nbr de loutre à diminuer){
@@ -41,10 +42,15 @@ public boolean Famine (){
 }
 
 double coeff famine=0;
+double r =0;//Dans initialisation faire dans un tableau une fois que toutes les pop sont initialisées?? rapport de chaque animaux ex 			Loutre.nombreTotAnim/Renard.nombreTotAnim
+double rActuel;
 
 public double mange (Animaux estMange){// 
 if (Famine==true){
-	double rActuel=Loutre.nombreTotAnim/Renard.nombreTotAnim;
+	r=estMange.nombreTotAnim/this.nombreTotAnim;
+	change géné
+	rActuel=estMange.nombreTotAnim/this.nombreTotAnim;
+	Loutre.nombreTotAnim/Renard.nombreTotAnim
 	coeff famine;=r/rActuel;
 	coefmort -= coeff famine;
 }
