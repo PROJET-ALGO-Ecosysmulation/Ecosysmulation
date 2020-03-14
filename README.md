@@ -75,7 +75,7 @@
 
 		for(int h=2; h<popAnimal.length; h++){
 		b=popAnimal[h];
-		double m= a*coefmort;
+        	double m= a*Math.abs(coefmort);
 		int mo=(int)m;
 		popAnimal[h]=mo;//modifier ici pour que tous les renards ne survivent pas
 		a=b;
