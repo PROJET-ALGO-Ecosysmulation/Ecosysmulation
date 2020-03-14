@@ -12,17 +12,26 @@
 	}
 
 
+	public int varTemp(int newtemp, int tempini){
+
+	    int var=Math.abs(newtemp-tempini);
+	    return var;
+	}
+
+
 	public double impactTemperature(int temp){
 
-		if (((temp > 40)&&(temp < 45)) || ((temp > -25)&&(temp < -13))){
-			coefmort=0.25; //25% survivent l'année suivante
-		}
+	    if (temp>42) {
+	    coefmort -= 0.02*varTemp(temp,42);
+	    }
 
-		if ((temp >= 45)||(temp <= -25)) {
-			coefmort=0; //0% survivent l'année suivante
-		}
+	    if (temp<-15) {
+	    coefmort -= 0.02*varTemp(temp,-15);
+	    }
+
 	       return coefmort;
 	}
+	
 
 
 	public abstract int DeriveGenetique (int a1, int a2, int a3);
