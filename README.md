@@ -28,6 +28,7 @@
 
 	public double impactTemperature(int temp){
 
+	// les limites de températures -15 et 42 ont été fixées au hasard; à choisir plus tard?
 
 	    if (temp>42) {
 	    coefmort -= 0.05*varTemp(temp,42);
