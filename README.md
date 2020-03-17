@@ -4,19 +4,20 @@
 	public static void main (String[] args) {
 		Animal Renard = new Animal("Renard",5,7,0.9,0.2);
 		Animal Loutre = new Animal("Loutre",8,2,0.9,0.5);
-		int temp=53;
+		int temp=20;
+	    int pH=7;
 	    int nbAnnees=3; //nombre itération
 	   // int [] popRenard = {100,21,14,15,17,13,17,14}; //initialisation population de base| à faire générer aléatoirement 
 
 		for (int i=0; i<nbAnnees+1;i++) {
 		System.out.print(Renard.toString(i));
-	    Renard.changeGeneration(temp);
+	    Renard.changeGeneration(temp,pH);
 	    System.out.println();
 		}
 
 		for (int i=0; i<nbAnnees+1;i++) {
 		System.out.print(Loutre.toString(i));
-	    Loutre.changeGeneration(temp);
+	    Loutre.changeGeneration(temp,pH);
 	    System.out.println();
 		}
 
