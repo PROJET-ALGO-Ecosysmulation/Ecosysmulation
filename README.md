@@ -11,27 +11,38 @@
 	    coefmort=c;
 	}
 
-
 	public int varTemp(int newtemp, int tempini){
 
 	    int var=Math.abs(newtemp-tempini);
 	    return var;
 	}
 
+	/*public boolean validationCoefMort(double coef){
+	    boolean ok=true;
+	    if (coef<0) {
+	    ok=false;
+	    }
+	    return ok;
+	   } */
+
 
 	public double impactTemperature(int temp){
 
+
 	    if (temp>42) {
-	    coefmort -= 0.02*varTemp(temp,42);
+	    coefmort -= 0.05*varTemp(temp,42);
 	    }
 
 	    if (temp<-15) {
-	    coefmort -= 0.02*varTemp(temp,-15);
+	    coefmort -= 0.05*varTemp(temp,-15);
 	    }
 
-	       return coefmort;
+	    /*if (validationCoefMort(coefmort)){
+	    return coefmort;} else{
+	    return 0;}*/
+
+	    return Math.abs(coefmort);
 	}
-	
 
 
 	public abstract int DeriveGenetique (int a1, int a2, int a3);
