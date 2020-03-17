@@ -62,12 +62,13 @@
 	    return nbAnRep; 
 	}
 
-	public void changeGeneration (int temp) {
+	public void changeGeneration (int temp, int pH) {
 
-		int a=popAnimal[1];
+			int a=popAnimal[1];
 		int b=1;
 
-		coefmort=super.impactTemperature(temp); // modifie le coefmort en fonction de l'écart de température par rapport à l'intervalle de température "normale"
+		coefmort=super.impactTemperature(temp);
+		coefmort=super.impactpH(pH);
 
 			popAnimal[1]=SurvieBebe();
 			popAnimal[0]=fecondite*NbAnimauxReproducteurs();
@@ -81,7 +82,7 @@
 		a=b;
 			}
 
-		for(int i=0; i<popAnimal.length; i++){  // si la valeur devient négative, on remplace par 0
+		for(int i=0; i<popAnimal.length; i++){
 		    if (popAnimal[i]<0){
 		    popAnimal[i]=0;
 		    } 
@@ -103,7 +104,7 @@
 	public String toString(int nbIte) {
 		String res = new String();
 
-		res = "coefmort = "+coefmort+ " Population annee "+nbIte+" de "+nom+" : ";
+		res = "coefmort = "+coefmort+ "Population annee "+nbIte+" de "+nom+" : ";
 		   for(int j=0; j<popAnimal.length; j++){ //affiche tableau à chaque itération
 		    res += popAnimal[j];
 		    res +="|";
@@ -112,7 +113,7 @@
 		return res;
 	}
 
-	public String simulGene(int nbIte,int temp){
+	/*public String simulGene(int nbIte,int temp){
 		String aff = new String ();
 
 		for (int i=0; i<nbIte+1;i++) {
@@ -123,6 +124,6 @@
 
 		return aff;
 
-	}
+	}*/
 
 	}
