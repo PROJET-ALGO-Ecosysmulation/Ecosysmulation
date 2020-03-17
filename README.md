@@ -67,7 +67,8 @@
 			int a=popAnimal[1];
 		int b=1;
 
-		super.impactTemperature(temp);
+		coefmort=super.impactTemperature(temp);
+
 
 			popAnimal[1]=SurvieBebe();
 			popAnimal[0]=fecondite*NbAnimauxReproducteurs();
@@ -75,11 +76,17 @@
 
 		for(int h=2; h<popAnimal.length; h++){
 		b=popAnimal[h];
-        	double m= a*Math.abs(coefmort);
+		double m= a*coefmort;
 		int mo=(int)m;
 		popAnimal[h]=mo;//modifier ici pour que tous les renards ne survivent pas
 		a=b;
 			}
+
+		for(int i=0; i<popAnimal.length; i++){
+		    if (popAnimal[i]<0){
+		    popAnimal[i]=0;
+		    } 
+		}
 
 	}
 
