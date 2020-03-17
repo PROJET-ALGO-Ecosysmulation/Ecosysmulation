@@ -11,9 +11,9 @@
 	    coefmort=c;
 	}
 
-	public int varTemp(int newtemp, int tempini){
+	public int calculVar(int newval, int valini){
 
-	    int var=Math.abs(newtemp-tempini);
+	    int var=Math.abs(newval-valini);
 	    return var;
 	}
 
@@ -28,19 +28,29 @@
 
 	public double impactTemperature(int temp){
 
-	// les limites de températures -15 et 42 ont été fixées au hasard; à choisir plus tard?
 
 	    if (temp>42) {
-	    coefmort -= 0.05*varTemp(temp,42);
+	    coefmort -= 0.05*calculVar(temp,42);
 	    }
 
 	    if (temp<-15) {
-	    coefmort -= 0.05*varTemp(temp,-15);
+	    coefmort -= 0.05*calculVar(temp,-15);
 	    }
 
 	    /*if (validationCoefMort(coefmort)){
 	    return coefmort;} else{
 	    return 0;}*/
+
+	    return Math.abs(coefmort);
+	}
+
+
+	public double impactpH(int valpH){
+
+
+	    if ((valpH>9)||(valpH<4)) {
+	    coefmort -= 0.05*calculVar(valpH,7);
+	    }
 
 	    return Math.abs(coefmort);
 	}
@@ -52,13 +62,13 @@
 
 	public abstract int NbAnimauxReproducteurs ();
 
-	public abstract void changeGeneration (int temp);
+	public abstract void changeGeneration (int temp, int pH);
 
 	public abstract int NbTotalAnimaux ();
 
 	public abstract String toString(int nbIte);
 
-	public abstract String simulGene(int nbIte,int temp);
+	//public abstract String simulGene(int nbIte,int temp);
 
 	//public abstract boolean peutSeDeplacer();
 	}
