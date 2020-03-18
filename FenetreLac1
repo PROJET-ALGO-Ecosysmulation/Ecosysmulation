@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.Color;  
 import java.awt.event.*;
+import java.awt.Font;
 
 public class FenetreLac extends JFrame implements ActionListener{
     
@@ -9,6 +10,10 @@ public class FenetreLac extends JFrame implements ActionListener{
     JLabel nombreRenards;
     JLabel nombreTruites;
     JLabel nombreLoutres;
+    JLabel temperature;
+    int temp;
+    FenetreExplication maFenetreExplication;
+    
     
 
 	
@@ -43,9 +48,9 @@ public class FenetreLac extends JFrame implements ActionListener{
         }
         
         //définition du libéllé (nom) des boutons
-       lesBoutons[0].setText("temperature");
-       lesBoutons[1].setText("derive");
-       lesBoutons[2].setText(" ");
+       lesBoutons[0].setText("Plus 1 degré");
+       lesBoutons[1].setText("Dérive");
+       lesBoutons[2].setText("Un an plus tard");
        lesBoutons[3].setText(" ");
        lesBoutons[4].setText(" ");
        lesBoutons[5].setText(" ");
@@ -65,24 +70,37 @@ public class FenetreLac extends JFrame implements ActionListener{
         //étiquette indiquand le nombre d'animaux
         a=20000000;
         nombreRenards = new JLabel();
+        Font police = new Font(" Arial ",Font.BOLD,20);
+		nombreRenards.setFont(police);
         nombreRenards.setText(""+a);
         nombreRenards.setBounds(150,300,50,50);
         lac.add(nombreRenards);
         nombreLoutres = new JLabel();
+        nombreLoutres.setFont(police);
         nombreLoutres.setText(""+a);
         nombreLoutres.setBounds(480,420,50,50);
         lac.add(nombreLoutres);
         nombreTruites = new JLabel();
+        nombreTruites.setFont(police);
         nombreTruites.setText(""+a);
         nombreTruites.setBounds(630,250,50,50);
         lac.add(nombreTruites);
         
+         //Affichage température
+		temp = 15;
+		temperature = new JLabel();
+		Font policeTemp = new Font(" Arial ",Font.BOLD,17);
+		temperature.setFont(policeTemp);
+		temperature.setText("TEMPERATURE ACTUELLE: " +temp + "degreC");
+		temperature.setBounds(50,700,500,100);
+		monConteneur.add(temperature);
+    
         //ajout image lac
         JLabel affLac = new JLabel(new ImageIcon("./lacPhoto.jpg"));
         affLac.setBounds(0,0,900,500);
         lac.add(affLac);
 
-        //meFenetreExplication = new FenetreExplication();
+        maFenetreExplication = new FenetreExplication();
                 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);             
         setVisible(true);
@@ -98,8 +116,18 @@ public class FenetreLac extends JFrame implements ActionListener{
 		nombreLoutres.setText(""+a);
 		nombreTruites.setText(""+a);
 
-		if (source == lesBoutons[0]) 
-			System.out.println("bouton 0 ok test ");
+		if (source == lesBoutons[0]) {
+			if (temp<45){
+			temp +=1;
+			temperature.setText("TEMPERATURE ACTUELLE:"+temp + "degreC");
+		}
+		if (temp>=45){
+            JOptionPane.showMessageDialog(this,"Vous avez atteint la temperature maximale");
+		}
+		maFenetreExplication.setVisible(true);
+	    
+		
+	}
 			
 		if (source == lesBoutons[1])
 			System.out.println("bouton 1 ok test "); 
@@ -121,16 +149,6 @@ public class FenetreLac extends JFrame implements ActionListener{
 			System.out.println("bouton 5 ok test ");
 			//actions a mettre ;					
     }
-}
-
-
-public class Lac {
-	
-	public static void main (String[] args) {
-        
-        FenetreLac maFenetreLac = new FenetreLac(); 
-		
-	}
 }
 
 
