@@ -1,4 +1,5 @@
 # Ecosysmulation
+public class Test{	
 	private double ph;
 	private double variaph;
 
@@ -46,12 +47,13 @@
 	double rActuel;
 
 	public double mange (Animaux estMange){// 
-	if (Famine==true){
-		r=estMange.nombreTotAnim/this.nombreTotAnim;
-		change géné
-		rActuel=estMange.nombreTotAnim/this.nombreTotAnim;
-		Loutre.nombreTotAnim/Renard.nombreTotAnim
-		coeff famine;=r/rActuel;
-		coefmort -= coeff famine;
+		if (Famine==true){
+			r=estMange.nombreTotAnim/this.nombreTotAnim;
+			change géné
+			rActuel=estMange.nombreTotAnim/this.nombreTotAnim;
+			Loutre.nombreTotAnim/Renard.nombreTotAnim
+			coeff famine;=r/rActuel;
+			coefmort -= coeff famine;
+		}
 	}
-	}
+}
