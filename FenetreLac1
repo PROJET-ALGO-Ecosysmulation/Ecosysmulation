@@ -6,6 +6,10 @@ public class FenetreLac extends JFrame implements ActionListener{
     
     JButton[] lesBoutons;
     int a;  // a declarer dans autre programme 
+    JLabel nombreRenards;
+    JLabel nombreTruites;
+    JLabel nombreLoutres;
+    
 
 	
 	public FenetreLac() {
@@ -60,15 +64,15 @@ public class FenetreLac extends JFrame implements ActionListener{
         
         //étiquette indiquand le nombre d'animaux
         a=20000000;
-        JLabel nombreRenards = new JLabel();
+        nombreRenards = new JLabel();
         nombreRenards.setText(""+a);
         nombreRenards.setBounds(150,300,50,50);
         lac.add(nombreRenards);
-        JLabel nombreLoutres = new JLabel();
+        nombreLoutres = new JLabel();
         nombreLoutres.setText(""+a);
         nombreLoutres.setBounds(480,420,50,50);
         lac.add(nombreLoutres);
-        JLabel nombreTruites = new JLabel();
+        nombreTruites = new JLabel();
         nombreTruites.setText(""+a);
         nombreTruites.setBounds(630,250,50,50);
         lac.add(nombreTruites);
@@ -90,7 +94,7 @@ public class FenetreLac extends JFrame implements ActionListener{
 		Object source = e.getSource();
 		
 		// a chaque appui sur un bouton le nombre d'animaux est succeptible de changer
-		nombreRenards.setText(""+a);
+		nombreRenards.setText("");
 		nombreLoutres.setText(""+a);
 		nombreTruites.setText(""+a);
 
