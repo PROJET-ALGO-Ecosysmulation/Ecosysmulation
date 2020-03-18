@@ -1,4 +1,6 @@
 # Ecosysmulation
+	import java.util.ArrayList;
+
 	public class Animal extends EtreVivant{
 
 	private String nom;
@@ -7,7 +9,8 @@
 	private int Allele3;*/
 	private int [] popAnimal;
 	private double surv; //pourcentage survie bb
-
+	private ArrayList<Integer> listeNbAn;
+	private int generation=0;
 
 	// Ecrire methode SurvieAnimaux avec méthode mere temperature + changer changement generation après impact temp
 
@@ -28,7 +31,19 @@
 
 			}
 
+
+	    this.listeNbAn = new ArrayList<Integer>();
+	    listeNbAn.add(NbTotalAnimaux());
+
 	}
+
+	public void afficheliste(){
+	    for (int i=0; i<listeNbAn.size();i++){
+		System.out.print("Population totale "+i+" : "+listeNbAn.get(i));
+
+	    }
+	}
+
 
 	public int DeriveGenetique (int a1, int a2, int a3){
 	    int sum = 0;
@@ -62,13 +77,14 @@
 	    return nbAnRep; 
 	}
 
-	public void changeGeneration (int temp, int pH) {
+	public void changeGeneration (int temp, int pH,Animal estMange) {
 
 			int a=popAnimal[1];
 		int b=1;
 
 		coefmort=super.impactTemperature(temp);
 		coefmort=super.impactpH(pH);
+		mange(estMange);
 
 			popAnimal[1]=SurvieBebe();
 			popAnimal[0]=fecondite*NbAnimauxReproducteurs();
@@ -88,6 +104,9 @@
 		    } 
 		}
 
+	    generation +=1;
+	    listeNbAn.add(NbTotalAnimaux());
+
 	}
 
 
@@ -100,6 +119,34 @@
 
 	return nbtotAn;
 	}
+
+
+	public boolean famine (){
+
+	    int nbAn=listeNbAn.get(generation)-listeNbAn.get(generation+1);
+
+	    if (nbAn > 0){
+		return true;
+	    } else { return false; }
+
+	}
+
+
+
+	public void mange (Animal estMange){
+	    double coeffamine=0;
+	    double r =0;
+	    double rActuel;
+
+	    if (famine()==true){
+		r=estMange.listeNbAn.get(0)/this.listeNbAn.get(0);
+		rActuel=estMange.listeNbAn.get(generation)/this.listeNbAn.get(generation);
+		coeffamine=r/rActuel;
+		coefmort -= coeffamine;
+	    }
+
+	}
+
 
 	public String toString(int nbIte) {
 		String res = new String();
@@ -127,3 +174,5 @@
 	}*/
 
 	}
+
+
