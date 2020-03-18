@@ -56,17 +56,26 @@
 	}
 
 
+
+
 	public abstract int DeriveGenetique (int a1, int a2, int a3);
 
 	public abstract int SurvieBebe ();
 
 	public abstract int NbAnimauxReproducteurs ();
 
-	public abstract void changeGeneration (int temp, int pH);
+	public abstract void changeGeneration (int temp, int pH,Animal estMange);
 
 	public abstract int NbTotalAnimaux ();
 
 	public abstract String toString(int nbIte);
+
+	public abstract void mange (Animal estMange);
+
+	public abstract boolean famine ();
+
+	public abstract void afficheliste();
+
 
 	//public abstract String simulGene(int nbIte,int temp);
 
