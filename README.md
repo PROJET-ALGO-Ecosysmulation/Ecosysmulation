@@ -48,7 +48,7 @@
 	public double impactpH(int valpH){
 
 
-	    if ((valpH>9)||(valpH<4)) {
+	    if ((valpH>9)||(valpH<6.5)) {
 	    coefmort -= 0.05*calculVar(valpH,7);
 	    }
 
