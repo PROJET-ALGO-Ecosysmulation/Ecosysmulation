@@ -5,17 +5,23 @@ import java.awt.Font;
 
 public class FenetreLac extends JFrame implements ActionListener{
     
+    Animal Aigle;
+    Animal Renard;
+    Animal Loutre;
+    Animal Truite; 
+    int ani1;  // classés selon la chaîne alimentaire
+    int ani2;
+    int ani3;
+    int ani4;
     JButton[] lesBoutons;
-    int a;  // a declarer dans autre programme 
-    int b;
-    int c;
+    JLabel nombreAigles;
     JLabel nombreRenards;
     JLabel nombreTruites;
     JLabel nombreLoutres;
     JLabel temperature;
 	JLabel lepH;
-    Animal Renard;
-    Animal Loutre;
+	
+     
     int temp;
     int pH;
     FenetreExplication maFenetreExplication;
@@ -25,8 +31,10 @@ public class FenetreLac extends JFrame implements ActionListener{
 	
 	public FenetreLac() {
 		super("Modelisation du lac");
+		Aigle = new Animal ("Aigle", 25,1,0.9,0.9  );
 		Renard = new Animal("Renard",5,7,0.9,0.2);
 	    Loutre = new Animal("Loutre",8,2,0.9,0.5);
+	    Truite = new Animal ("Truite",10,25,0.9,0.7 );
 	    
         
         setBounds(50,50,1000,800);
@@ -75,28 +83,39 @@ public class FenetreLac extends JFrame implements ActionListener{
         JLabel affTruite = new JLabel(new ImageIcon("./truite.png"));
         affTruite.setBounds(600,200,100,100);
         lac.add(affTruite);
+        JLabel affAigle = new JLabel(new ImageIcon("./aigle.png"));
+        affAigle.setBounds(10,50,100,100);
+        lac.add(affAigle);
         
         
         //étiquette indiquand le nombre d'animaux
-        a = Renard.NbTotalAnimaux();
-        b = Loutre.NbTotalAnimaux();
-        c= 200; // la truite n'est pas encore définie comme animal
-        nombreRenards = new JLabel();
+        ani1 = Aigle.NbTotalAnimaux();
+        ani2 = Renard.NbTotalAnimaux();
+        ani3 = Loutre.NbTotalAnimaux();
+        ani4= Truite.NbTotalAnimaux();
+        
+        nombreAigles = new JLabel();
         Font police = new Font(" Arial ",Font.BOLD,20);
+        nombreAigles.setFont(police);
+        nombreAigles.setText(""+ani1);
+        nombreAigles.setBounds(110,7,50,50);
+        lac.add(nombreAigles);
+        nombreRenards = new JLabel();
 		nombreRenards.setFont(police);
-        nombreRenards.setText(""+a);
+        nombreRenards.setText(""+ani2);
         nombreRenards.setBounds(150,300,50,50);
         lac.add(nombreRenards);
         nombreLoutres = new JLabel();
         nombreLoutres.setFont(police);
-        nombreLoutres.setText(""+b);
-        nombreLoutres.setBounds(480,420,50,50);
+        nombreLoutres.setText(""+ani3);
+        nombreLoutres.setBounds(480,430,50,50);
         lac.add(nombreLoutres);
         nombreTruites = new JLabel();
         nombreTruites.setFont(police);
-        nombreTruites.setText(""+c);
-        nombreTruites.setBounds(630,250,50,50);
+        nombreTruites.setText(""+ani4);
+        nombreTruites.setBounds(630,270,50,50);
         lac.add(nombreTruites);
+        
         
          //Affichage température
 		temp = 15;
@@ -133,17 +152,22 @@ public class FenetreLac extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		
-		// a chaque appui sur un bouton le nombre d'animaux est succeptible de changer
-		nombreRenards.setText("");
-		nombreLoutres.setText(""+a);
-		nombreTruites.setText(""+a);
+			Aigle.changeGeneration(temp,pH);
+			Renard.changeGeneration(temp,pH);
+			Loutre.changeGeneration(temp,pH);
+			Truite.changeGeneration(temp,pH);
+			nombreAigles.setText(""+Aigle.NbTotalAnimaux());
+		    nombreRenards.setText(""+Renard.NbTotalAnimaux());
+			nombreLoutres.setText(""+Loutre.NbTotalAnimaux());
+			nombreTruites.setText(""+Truite.NbTotalAnimaux());
+		
 		maFenetreExplication.setVisible(true);
 
 		if (source == lesBoutons[0]) {
-			
 			if (temp<45){
 				temp +=1;
 				temperature.setText("TEMPERATURE ACTUELLE:"+temp + "degreC");
+			
 			}
 			if (temp>=45){
 				JOptionPane.showMessageDialog(this,"Vous avez atteint la temperature maximale");
@@ -173,7 +197,7 @@ public class FenetreLac extends JFrame implements ActionListener{
 		if (source == lesBoutons[3]) {
 			if (pH>1){
 				pH -=1;
-				lepH.setText("pH DU LAC:"+pH);
+			
 			}
 			if (pH<=1){
 				JOptionPane.showMessageDialog(this,"Vous avez atteint le pH minimal");
@@ -181,12 +205,9 @@ public class FenetreLac extends JFrame implements ActionListener{
 		}
 			
 			
-		if (source == lesBoutons[4]) 
-			Renard.changeGeneration(temp,pH);
-			Loutre.changeGeneration(temp,pH);
-			 nombreRenards.setText(""+Renard.NbTotalAnimaux());
-			 nombreLoutres.setText(""+Loutre.NbTotalAnimaux());
-			 nombreTruites.setText(""+c);
+		if (source == lesBoutons[4]) {
+		}
+		
 			
 			
 		if (source == lesBoutons[5]) 
@@ -194,4 +215,6 @@ public class FenetreLac extends JFrame implements ActionListener{
 			//actions a mettre ;					
     }
 }
+
+
 
