@@ -152,7 +152,7 @@ public class FenetreLac extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		
-			Aigle.changeGeneration(temp,pH);
+			Aigle.changeGeneration(temp,pH);          //En fait c'est mieux de le mettre ici car on change de génération dès qu'on appuie sur un bouton
 			Renard.changeGeneration(temp,pH);
 			Loutre.changeGeneration(temp,pH);
 			Truite.changeGeneration(temp,pH);
