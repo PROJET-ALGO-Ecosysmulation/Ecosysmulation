@@ -24,7 +24,11 @@ public class FenetreLac extends JFrame implements ActionListener{
 
 	
 	public FenetreLac() {
-        super("Modelisation du lac");
+		super("Modelisation du lac");
+		Renard = new Animal("Renard",5,7,0.9,0.2);
+	    Loutre = new Animal("Loutre",8,2,0.9,0.5);
+	    
+        
         setBounds(50,50,1000,800);
         setLayout(null);
         
@@ -190,6 +194,4 @@ public class FenetreLac extends JFrame implements ActionListener{
 			//actions a mettre ;					
     }
 }
-
-
 
