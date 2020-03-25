@@ -39,10 +39,11 @@ public class FenetreLac extends JFrame implements ActionListener{
         
         setBounds(50,50,1000,800);
         setLayout(null);
+        setResizable(false);
         
         JPanel monConteneur = new JPanel();
         monConteneur.setLayout(null);
-        monConteneur.setBounds(0,0,1000,800);
+        monConteneur.setBounds(0,0,getWidth(),getHeight());
         monConteneur.setBackground(Color.lightGray);
         add(monConteneur);
         
@@ -84,8 +85,9 @@ public class FenetreLac extends JFrame implements ActionListener{
         affTruite.setBounds(600,200,100,100);
         lac.add(affTruite);
         JLabel affAigle = new JLabel(new ImageIcon("./aigle.png"));
-        affAigle.setBounds(10,50,100,100);
+        affAigle.setBounds(230,0,200,80);
         lac.add(affAigle);
+      
         
         
         //étiquette indiquand le nombre d'animaux
@@ -98,7 +100,7 @@ public class FenetreLac extends JFrame implements ActionListener{
         Font police = new Font(" Arial ",Font.BOLD,20);
         nombreAigles.setFont(police);
         nombreAigles.setText(""+ani1);
-        nombreAigles.setBounds(110,7,50,50);
+        nombreAigles.setBounds(280,10,50,50);
         lac.add(nombreAigles);
         nombreRenards = new JLabel();
 		nombreRenards.setFont(police);
@@ -122,7 +124,7 @@ public class FenetreLac extends JFrame implements ActionListener{
 		temperature = new JLabel();
 		Font policeTemp = new Font(" Arial ",Font.BOLD,17);
 		temperature.setFont(policeTemp);
-		temperature.setText("TEMPERATURE DU LAC: " +temp + "degreC");
+		temperature.setText("TEMPERATURE DU LAC : " +temp + " °C");
 		temperature.setBounds(50,580,450,100);
 		monConteneur.add(temperature);
     
@@ -166,7 +168,7 @@ public class FenetreLac extends JFrame implements ActionListener{
 		if (source == lesBoutons[0]) {
 			if (temp<45){
 				temp +=1;
-				temperature.setText("TEMPERATURE ACTUELLE:"+temp + "degreC");
+				temperature.setText("TEMPERATURE ACTUELLE: "+temp + " °C");
 			
 			}
 			if (temp>=45){
@@ -177,7 +179,7 @@ public class FenetreLac extends JFrame implements ActionListener{
 		if (source == lesBoutons[1]){
 			if (temp>-1){
 				temp -=1;
-				temperature.setText("TEMPERATURE ACTUELLE:"+temp + "degreC");
+				temperature.setText("TEMPERATURE ACTUELLE: "+temp + " °C");
 			}
 			if (temp<=-1){
 				JOptionPane.showMessageDialog(this,"Vous avez atteint la temperature minimale");
@@ -215,6 +217,4 @@ public class FenetreLac extends JFrame implements ActionListener{
 			//actions a mettre ;					
     }
 }
-
-
 
