@@ -4,13 +4,11 @@
 	public class Animal extends EtreVivant{
 
 	private String nom;
-	/*private int Allele1;
-	private int Allele2;
-	private int Allele3;*/
 	private int [] popAnimal;
 	private double surv; //pourcentage survie bb
 	private ArrayList<Integer> listeNbAn;
 	private int generation=0;
+	private final static String POPFIN = "Insecte" ;
 
 	// Ecrire methode SurvieAnimaux avec méthode mere temperature + changer changement generation après impact temp
 
@@ -36,7 +34,11 @@
 	    listeNbAn.add(NbTotalAnimaux());
 
 	}
-
+	
+	public Animal (int d, int f, double c, double s) {
+    	this(Animal.POPFIN,d,f,c,s);
+	}
+	
 	public void afficheliste(){
 	    for (int i=0; i<listeNbAn.size();i++){
 		System.out.print("Population totale "+i+" : "+listeNbAn.get(i));
@@ -77,14 +79,23 @@
 	    return nbAnRep; 
 	}
 
-	public void changeGeneration (int temp, int pH,Animal estMange) {
+	public void changeGeneration (int temp, int pH,Animal animalmange) {
 
 			int a=popAnimal[1];
 		int b=1;
 
+	 if (animalmange.nom == Animal.POPFIN){
+		    coefmort=animalmange.impactTemperature(temp);
+		    coefmort=animalmange.impactpH(pH);
+		}
+        
+        if (this.nom == "Renard") {
+            chasse();
+        }
+
 		coefmort=super.impactTemperature(temp);
 		coefmort=super.impactpH(pH);
-		mange(estMange);
+		mange(animalmange);
 
 			popAnimal[1]=SurvieBebe();
 			popAnimal[0]=fecondite*NbAnimauxReproducteurs();
