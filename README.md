@@ -1,15 +1,18 @@
 import javax.swing.*; 
 import java.awt.*; 
 import java.util.LinkedList;
+import java.awt.event.*;
 
-public class FenetreRegles extends JFrame{
+public class FenetreRegles extends JFrame implements ActionListener{
+	
+	JButton b1; ///
 
 	public FenetreRegles(){
 
 
 		this.setTitle("                                                                Comment fonctionne notre simulation ?");
 		this.setLayout(null);
-		this.setSize(850,600);
+		this.setSize(850,400);
 		this.setLocation(1050,50);
 		this.setResizable(false);
 		
@@ -34,11 +37,23 @@ public class FenetreRegles extends JFrame{
 		lesTextes[4].setText(" ");
 		lesTextes[5].setText(" ");
 		lesTextes[6].setText(" ");
-		lesTextes[7].setText(" ");   
+		lesTextes[7].setText(" ");  
+		
+		 
+		/// bouton pour fermer la fenetre
+		b1= new JButton("Ok j ai lu les consignes");
+		b1.setBounds(getWidth()/2-300/2,getHeight()-200,300,50); 
+        b1.addActionListener(this);
+        monConteneur.add(b1);
 		
 		add(monConteneur);
 		this.setVisible(true);
     
     
 	}
+	
+	 public void actionPerformed(ActionEvent e) {
+		Object source = e.getSource();
+		this.setVisible(false);
+	}	
 }
