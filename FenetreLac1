@@ -13,6 +13,10 @@ public class FenetreLac extends JFrame implements ActionListener{
     int ani2;
     int ani3;
     int ani4;
+    
+    JLabel affPanneau;
+    boolean surpeche;
+    
     JButton[] lesBoutons;
     JLabel nombreAigles;
     JLabel nombreRenards;
@@ -20,8 +24,7 @@ public class FenetreLac extends JFrame implements ActionListener{
     JLabel nombreLoutres;
     JLabel temperature;
 	JLabel lepH;
-	
-     
+	     
     int temp;
     int pH;
     FenetreExplication maFenetreExplication;
@@ -30,7 +33,7 @@ public class FenetreLac extends JFrame implements ActionListener{
 
 	
 	public FenetreLac() {
-		super("Modelisation du lac");
+		super("                                                                                                   Modelisation du lac");
 		Aigle = new Animal ("Aigle", 25,1,0.9,0.9  );
 		Renard = new Animal("Renard",5,7,0.9,0.2);
 	    Loutre = new Animal("Loutre",8,2,0.9,0.5);
@@ -54,12 +57,12 @@ public class FenetreLac extends JFrame implements ActionListener{
         monConteneur.add(lac);
         
         //instanciation et placement boutons
-        lesBoutons = new JButton[10]; 
+        lesBoutons = new JButton[8]; 
         int indice=0;
-        for(int i=0;i<5;i++){
+        for(int i=0;i<4;i++){
             for(int j=0;j<2;j++){
             lesBoutons[indice]=new JButton();
-            lesBoutons[indice].setBounds(100+i*180,550+j*120,120,50); 
+            lesBoutons[indice].setBounds(100+i*220,550+j*120,160,50); 
             lesBoutons[indice].addActionListener(this);
             monConteneur.add(lesBoutons[indice]); 
             indice++;
@@ -72,7 +75,7 @@ public class FenetreLac extends JFrame implements ActionListener{
        lesBoutons[2].setText("pH +1");
        lesBoutons[3].setText("pH -1 ");
        lesBoutons[4].setText("Un an plus tard ");
-       lesBoutons[5].setText(" ");
+       lesBoutons[5].setText("Surpeche");   ///
         
         //ajout images animaux 
         JLabel affRenard = new JLabel(new ImageIcon("./renard.png"));
@@ -87,8 +90,7 @@ public class FenetreLac extends JFrame implements ActionListener{
         JLabel affAigle = new JLabel(new ImageIcon("./aigle.png"));
         affAigle.setBounds(230,0,200,80);
         lac.add(affAigle);
-      
-        
+               
         
         //étiquette indiquand le nombre d'animaux
         ani1 = Aigle.NbTotalAnimaux();
@@ -137,11 +139,18 @@ public class FenetreLac extends JFrame implements ActionListener{
 		lepH.setBounds(500,580,450,100);
 		monConteneur.add(lepH);
 		
+		// Affichage panneau interdiction peche
+        affPanneau = new JLabel(new ImageIcon("./peche_interdite.png"));
+		affPanneau.setBounds(100,300,180,250);
+		lac.add(affPanneau);
+		//affPanneau.setVisible(false);
 		
         //ajout image lac
         JLabel affLac = new JLabel(new ImageIcon("./lacPhoto.jpg"));
         affLac.setBounds(0,0,900,500);
         lac.add(affLac);
+        
+        
 
         maFenetreExplication = new FenetreExplication();
                 
@@ -212,9 +221,21 @@ public class FenetreLac extends JFrame implements ActionListener{
 		
 			
 			
-		if (source == lesBoutons[5]) 
-			System.out.println("bouton 5 ok test ");
-			//actions a mettre ;					
+		if (source == lesBoutons[5]) {
+			
+			affPanneau.setVisible(surpeche);
+			if(surpeche==false)
+				lesBoutons[5].setText("Arreter Surpeche");
+			else
+				lesBoutons[5].setText("Surpeche");
+			surpeche=!surpeche;
+		}
+		
+		if (source == lesBoutons[6]) {
+		}
+		
+		if (source == lesBoutons[7]) {
+		}	
     }
 }
 
