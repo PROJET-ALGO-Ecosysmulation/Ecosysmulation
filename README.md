@@ -54,11 +54,12 @@
 
 	    return Math.abs(coefmort);
 	}
-
-
-
-
-	public abstract int DeriveGenetique (int a1, int a2, int a3);
+	
+	
+	public double chasse() {
+	    this.coefmort-=0.2;
+	   return coefmort;
+	}
 
 	public abstract int SurvieBebe ();
 
