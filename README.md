@@ -90,7 +90,7 @@
 		}
         
         if (this.nom == "Renard") {
-            chasse();
+            super.chasse();
         }
 
 		coefmort=super.impactTemperature(temp);
