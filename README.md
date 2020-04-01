@@ -1,8 +1,38 @@
 # Ecosysmulation
+	import java.util.LinkedList; 
+	
 	public class TestRenard {
 
 	public static void main (String[] args) {
-		Animal Renard = new Animal("Renard",5,7,0.9,0.2);
+		
+		    Animal Renard;
+    Animal Loutre;
+    Animal Truite;
+    Animal Insecte;
+    
+    Renard = new Animal("Renard",5,7,0.9,0.2);
+    Loutre = new Animal("Loutre",8,2,0.9,0.5);
+    Truite = new Animal("Truite",10,2500,0.9,0.01);
+    Insecte = new Animal(10,2500,0.9,0.01);
+        
+        LinkedList<Animal> chaineAlim=new LinkedList<Animal>();
+        chaineAlim.add(Renard);
+        chaineAlim.add(Loutre);
+        chaineAlim.add(Truite);
+        chaineAlim.add(Insecte);  
+        
+        
+        Animal ani1 = Renard;
+        int i = 1;
+    while(chaineAlim.get(i) != Insecte){
+        ani1.mange(chaineAlim.get(i));
+        ani1=chaineAlim.get(i);
+        i++;
+    }
+    
+    FenetreLac maFenetreLac = new FenetreLac();
+		
+		/*Animal Renard = new Animal("Renard",5,7,0.9,0.2);
 		Animal Loutre = new Animal("Loutre",8,2,0.9,0.5);
 		int temp=20;
 	    int pH=10;
@@ -23,7 +53,7 @@
 
 	    Loutre.afficheliste();
 
-	   //Renard.simulGene(nbAnnees); // affiche rien
+	   //Renard.simulGene(nbAnnees); // affiche rien*/
 
 	  }
 	}
