@@ -24,7 +24,8 @@ public class FenetreLac extends JFrame implements ActionListener{
     JLabel nombreLoutres;
     JLabel temperature;
 	JLabel lepH;
-	     
+	
+     
     int temp;
     int pH;
     FenetreExplication maFenetreExplication;
@@ -33,7 +34,7 @@ public class FenetreLac extends JFrame implements ActionListener{
 
 	
 	public FenetreLac() {
-		super("                                                                                                   Modelisation du lac");
+		super("Modelisation du lac");
 		Aigle = new Animal ("Aigle", 25,1,0.9,0.9  );
 		Renard = new Animal("Renard",5,7,0.9,0.2);
 	    Loutre = new Animal("Loutre",8,2,0.9,0.5);
@@ -57,12 +58,12 @@ public class FenetreLac extends JFrame implements ActionListener{
         monConteneur.add(lac);
         
         //instanciation et placement boutons
-        lesBoutons = new JButton[8]; 
+        lesBoutons = new JButton[10]; 
         int indice=0;
-        for(int i=0;i<4;i++){
+        for(int i=0;i<5;i++){
             for(int j=0;j<2;j++){
             lesBoutons[indice]=new JButton();
-            lesBoutons[indice].setBounds(100+i*220,550+j*120,160,50); 
+            lesBoutons[indice].setBounds(100+i*180,550+j*120,120,50); 
             lesBoutons[indice].addActionListener(this);
             monConteneur.add(lesBoutons[indice]); 
             indice++;
@@ -75,7 +76,7 @@ public class FenetreLac extends JFrame implements ActionListener{
        lesBoutons[2].setText("pH +1");
        lesBoutons[3].setText("pH -1 ");
        lesBoutons[4].setText("Un an plus tard ");
-       lesBoutons[5].setText("Surpeche");   ///
+       lesBoutons[5].setText("Surpeche");
         
         //ajout images animaux 
         JLabel affRenard = new JLabel(new ImageIcon("./renard.png"));
@@ -90,7 +91,8 @@ public class FenetreLac extends JFrame implements ActionListener{
         JLabel affAigle = new JLabel(new ImageIcon("./aigle.png"));
         affAigle.setBounds(230,0,200,80);
         lac.add(affAigle);
-               
+      
+        
         
         //étiquette indiquand le nombre d'animaux
         ani1 = Aigle.NbTotalAnimaux();
@@ -139,7 +141,8 @@ public class FenetreLac extends JFrame implements ActionListener{
 		lepH.setBounds(500,580,450,100);
 		monConteneur.add(lepH);
 		
-		// Affichage panneau interdiction peche
+		//Affichage panneau interdiction peche
+        
         affPanneau = new JLabel(new ImageIcon("./peche_interdite.png"));
 		affPanneau.setBounds(100,300,180,250);
 		lac.add(affPanneau);
@@ -149,40 +152,43 @@ public class FenetreLac extends JFrame implements ActionListener{
         JLabel affLac = new JLabel(new ImageIcon("./lacPhoto.jpg"));
         affLac.setBounds(0,0,900,500);
         lac.add(affLac);
-        
-        
 
         maFenetreExplication = new FenetreExplication();
                 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);             
         setVisible(true);
         
+        
 		
 	}
     
     public void actionPerformed(ActionEvent e) {
+		
 		Object source = e.getSource();
 		
-			Aigle.changeGeneration(temp,pH);          //En fait c'est mieux de le mettre ici car on change de génération dès qu'on appuie sur un bouton
-			Renard.changeGeneration(temp,pH);
-			Loutre.changeGeneration(temp,pH);
-			Truite.changeGeneration(temp,pH);
-			nombreAigles.setText(""+Aigle.NbTotalAnimaux());
-		    nombreRenards.setText(""+Renard.NbTotalAnimaux());
-			nombreLoutres.setText(""+Loutre.NbTotalAnimaux());
-			nombreTruites.setText(""+Truite.NbTotalAnimaux());
+		Aigle.changeGeneration(temp,pH);          //En fait c'est mieux de le mettre ici car on change de génération dès qu'on appuie sur un bouton
+		Renard.changeGeneration(temp,pH);
+		Loutre.changeGeneration(temp,pH);
+		Truite.changeGeneration(temp,pH);
+		nombreAigles.setText(""+Aigle.NbTotalAnimaux());
+	    nombreRenards.setText(""+Renard.NbTotalAnimaux());
+		nombreLoutres.setText(""+Loutre.NbTotalAnimaux());
+		nombreTruites.setText(""+Truite.NbTotalAnimaux());
 		
 		maFenetreExplication.setVisible(true);
+		
+		
 
 		if (source == lesBoutons[0]) {
-			if (temp<45){
+			if (temp<35){
 				temp +=1;
 				temperature.setText("TEMPERATURE ACTUELLE: "+temp + " °C");
 			
 			}
-			if (temp>=45){
+			if (temp>=35){
 				JOptionPane.showMessageDialog(this,"Vous avez atteint la temperature maximale");
 			}
+			maFenetreExplication.affBouton1(); 
 		}
 			
 		if (source == lesBoutons[1]){
@@ -193,26 +199,29 @@ public class FenetreLac extends JFrame implements ActionListener{
 			if (temp<=-1){
 				JOptionPane.showMessageDialog(this,"Vous avez atteint la temperature minimale");
 			}
+				maFenetreExplication.affBouton2();
 		}
 			
 		if (source == lesBoutons[2]){
-			if (pH<12){
+			if (pH<10){
 				pH +=1;
 				lepH.setText("pH DU LAC:"+pH);
 			}
-			if (pH>=12){
+			if (pH>=10){
 				JOptionPane.showMessageDialog(this,"Vous avez atteint le pH maximal");
-			}	
+			}
+				maFenetreExplication.affBouton3();	
 		}	
 			
 		if (source == lesBoutons[3]) {
-			if (pH>1){
+			if (pH>3){
 				pH -=1;
 			
 			}
-			if (pH<=1){
+			if (pH<=3){
 				JOptionPane.showMessageDialog(this,"Vous avez atteint le pH minimal");
 			}
+			maFenetreExplication.affBouton4();
 		}
 			
 			
@@ -221,7 +230,7 @@ public class FenetreLac extends JFrame implements ActionListener{
 		
 			
 			
-		if (source == lesBoutons[5]) {
+		if (source == lesBoutons[5])  {
 			
 			affPanneau.setVisible(surpeche);
 			if(surpeche==false)
@@ -230,12 +239,9 @@ public class FenetreLac extends JFrame implements ActionListener{
 				lesBoutons[5].setText("Surpeche");
 			surpeche=!surpeche;
 		}
-		
-		if (source == lesBoutons[6]) {
-		}
-		
-		if (source == lesBoutons[7]) {
-		}	
+								
     }
+}
+
 }
 
