@@ -102,7 +102,7 @@ public class FenetreExplication extends JFrame implements ActionListener{
 			lesTextes[i].setBounds(10,10+i*30,getWidth(),20); 
 			add(lesTextes[i]);       
 		}
-		lesTestes[0].setText("Tant que le pH de l'eau est entre 6,5 à 9,0, les populations évoluent normalement");
+		lesTextes[0].setText("Tant que le pH de l'eau est entre 6,5 à 9,0, les populations évoluent normalement");
 		lesTextes[1].setText("La diminution du pH de l'eau est du : ");
 		lesTextes[2].setText("à l'acceleration du controle de la pollution pour contrer les pluies acides");
 		lesTextes[3].setText("Les deux tiers des cours d'eau aux Etats-Unis ont connu une alcanisation au début des annees 60.");
