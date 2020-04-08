@@ -180,12 +180,12 @@ public class FenetreLac extends JFrame implements ActionListener{
 		
 
 		if (source == lesBoutons[0]) {
-			if (temp<35){
+			if (temp<45){
 				temp +=1;
 				temperature.setText("TEMPERATURE ACTUELLE DE L'AIR: "+temp + " °C");
 			
 			}
-			if (temp>=35){
+			if (temp>=45){
 				JOptionPane.showMessageDialog(this,"Vous avez atteint la temperature maximale");
 			}
 			maFenetreExplication.affBouton1(); 
