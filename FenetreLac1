@@ -128,7 +128,7 @@ public class FenetreLac extends JFrame implements ActionListener{
 		temperature = new JLabel();
 		Font policeTemp = new Font(" Arial ",Font.BOLD,17);
 		temperature.setFont(policeTemp);
-		temperature.setText("TEMPERATURE DU LAC : " +temp + " °C");
+		temperature.setText("TEMPERATURE DE L'AIR : " +temp + " °C");
 		temperature.setBounds(50,580,450,100);
 		monConteneur.add(temperature);
     
@@ -182,7 +182,7 @@ public class FenetreLac extends JFrame implements ActionListener{
 		if (source == lesBoutons[0]) {
 			if (temp<35){
 				temp +=1;
-				temperature.setText("TEMPERATURE ACTUELLE: "+temp + " °C");
+				temperature.setText("TEMPERATURE ACTUELLE DE L'AIR: "+temp + " °C");
 			
 			}
 			if (temp>=35){
@@ -194,7 +194,7 @@ public class FenetreLac extends JFrame implements ActionListener{
 		if (source == lesBoutons[1]){
 			if (temp>-1){
 				temp -=1;
-				temperature.setText("TEMPERATURE ACTUELLE: "+temp + " °C");
+				temperature.setText("TEMPERATURE ACTUELLE DE L'AIR: "+temp + " °C");
 			}
 			if (temp<=-1){
 				JOptionPane.showMessageDialog(this,"Vous avez atteint la temperature minimale");
