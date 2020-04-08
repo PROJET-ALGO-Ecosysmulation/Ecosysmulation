@@ -1,12 +1,12 @@
 # Ecosysmulation
-	import java.util.ArrayList;
+	import java.util.LinkedList;
 
 	public class Animal extends EtreVivant{
 
 	private String nom;
 	private int [] popAnimal;
-	private double surv; //pourcentage survie bb
-	private ArrayList<Integer> listeNbAn;
+	private double surviebb; //pourcentage survie bb
+	private LinkedList <Integer> listeNbAn;
 	private int generation=0;
 	private final static String POPFIN = "Insecte" ;
 
@@ -15,52 +15,40 @@
 	public Animal (String n,/* int A1, int A2, int A3,*/ int d, int f, double c, double s) {
 		super(d,f,c);
 		nom=n;
-		surv=s;
-		//Allele1=A1;
-	   // Allele2=A2;
-		//Allele3=A3;
+		surviebb=s;
 
-		this.popAnimal=new int [d];
+	    this.popAnimal=new int [d];
 
 	   for(int j=0; j<popAnimal.length; j++){
-			double rand =100*Math.random()+10;
+			double rand =10*Math.random()+10;
 			int rand2 = (int)rand;
 			popAnimal[j]=rand2;
 
 			}
 
 
-	    this.listeNbAn = new ArrayList<Integer>();
+	    this.listeNbAn = new LinkedList <Integer>();
 	    listeNbAn.add(NbTotalAnimaux());
 
+
 	}
-	
+
 	public Animal (int d, int f, double c, double s) {
-    	this(Animal.POPFIN,d,f,c,s);
+	    this(Animal.POPFIN,d,f,c,s);
+
 	}
-	
+
 	public void afficheliste(){
 	    for (int i=0; i<listeNbAn.size();i++){
 		System.out.print("Population totale "+i+" : "+listeNbAn.get(i));
+		System.out.println();
 
 	    }
-	}
-
-
-	public int DeriveGenetique (int a1, int a2, int a3){
-	    int sum = 0;
-	    while (sum==0){
-		int a=(int)Math.random();
-		int b=(int)Math.random();
-		int c=(int)Math.random();
-		sum = a+b+c;
-	    }
-		return sum;
 	}
 
 
 	public int SurvieBebe (){
-		double res = popAnimal[0]*surv*coefmort;// coefmort à mettre ou pas? comment bb peuvent être impactés aussi par paramètres ?
+		double res = popAnimal[0]*surviebb*coefsurvie;// coefsurvie à mettre ou pas? comment bb peuvent être impactés aussi par paramètres ?
 		int bbsurvie = (int)res;
 
 	return bbsurvie;
@@ -79,23 +67,31 @@
 	    return nbAnRep; 
 	}
 
-	public void changeGeneration (int temp, int pH,Animal animalmange) {
+	public void changeGeneration (int temp, int pH, Animal animalmange) {
+
+	    generation +=1;
+	    listeNbAn.add(NbTotalAnimaux());
 
 			int a=popAnimal[1];
 		int b=1;
 
-	 if (animalmange.nom == Animal.POPFIN){
-		    coefmort=animalmange.impactTemperature(temp);
-		    coefmort=animalmange.impactpH(pH);
+		/*if (animalmange.nom == Animal.POPFIN){
+		    coefsurvie=animalmange.impactTemperature(temp);
+		    coefsurvie=animalmange.impactpH(pH);
 		}
-        
-        if (this.nom == "Renard") {
-            super.chasse();
-        }
 
-		coefmort=super.impactTemperature(temp);
-		coefmort=super.impactpH(pH);
-		mange(animalmange);
+		if (this.nom == "Renard") {
+		    super.chasse();
+		}*/
+		for(int i=0; i<popAnimal.length; i++){
+		    if (popAnimal[i]<0){
+		    popAnimal[i]=0;
+		    } 
+		}
+
+		coefsurvie=super.impactTemperature(temp);
+		coefsurvie=super.impactpH(pH);
+		//this.mange(animalmange);
 
 			popAnimal[1]=SurvieBebe();
 			popAnimal[0]=fecondite*NbAnimauxReproducteurs();
@@ -103,7 +99,7 @@
 
 		for(int h=2; h<popAnimal.length; h++){
 		b=popAnimal[h];
-		double m= a*coefmort;
+		double m= a*coefsurvie;
 		int mo=(int)m;
 		popAnimal[h]=mo;//modifier ici pour que tous les renards ne survivent pas
 		a=b;
@@ -115,10 +111,45 @@
 		    } 
 		}
 
+
+	}
+
+	public void changeGeneration (int temp, int pH) { // changegeneration pour le dernier animal de la chaine alimentaire
 	    generation +=1;
 	    listeNbAn.add(NbTotalAnimaux());
 
+	    int a=popAnimal[1];
+	    int b=1;
+
+	    for(int i=0; i<popAnimal.length; i++){
+		    if (popAnimal[i]<0){
+		    popAnimal[i]=0;
+		    } 
+		}
+
+		coefsurvie=super.impactTemperature(temp);
+		coefsurvie=super.impactpH(pH);
+
+			popAnimal[1]=SurvieBebe();
+			popAnimal[0]=fecondite*NbAnimauxReproducteurs();
+
+
+		for(int h=2; h<popAnimal.length; h++){
+		b=popAnimal[h];
+		double m= a*coefsurvie;
+		int mo=(int)m;
+		popAnimal[h]=mo;//modifier ici pour que tous les renards ne survivent pas
+		a=b;
+			}
+
+		for(int i=0; i<popAnimal.length; i++){
+		    if (popAnimal[i]<0){
+		    popAnimal[i]=0;
+		    } 
+		}
+
 	}
+
 
 
 	public int NbTotalAnimaux () {
@@ -153,7 +184,7 @@
 		r=estMange.listeNbAn.get(0)/this.listeNbAn.get(0);
 		rActuel=estMange.listeNbAn.get(generation)/this.listeNbAn.get(generation);
 		coeffamine=r/rActuel;
-		coefmort -= coeffamine;
+		coefsurvie -= coeffamine;
 	    }
 
 	}
@@ -162,7 +193,7 @@
 	public String toString(int nbIte) {
 		String res = new String();
 
-		res = "coefmort = "+coefmort+ "Population annee "+nbIte+" de "+nom+" : ";
+		res = "coefsurvie = "+coefsurvie+ "Population annee "+nbIte+" de "+nom+" : ";
 		   for(int j=0; j<popAnimal.length; j++){ //affiche tableau à chaque itération
 		    res += popAnimal[j];
 		    res +="|";
@@ -171,19 +202,6 @@
 		return res;
 	}
 
-	/*public String simulGene(int nbIte,int temp){
-		String aff = new String ();
 
-		for (int i=0; i<nbIte+1;i++) {
-			aff=this.toString(i);
-			this.changeGeneration(temp);
-			aff+="\n"; // à la ligne?
-		}
-
-		return aff;
-
-	}*/
 
 	}
-
-
