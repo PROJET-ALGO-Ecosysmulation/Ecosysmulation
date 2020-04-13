@@ -1,9 +1,9 @@
-	import javax.swing.*;
-	import java.awt.Color;  
-	import java.awt.event.*;
-	import java.awt.Font;
+import javax.swing.*;
+import java.awt.Color;  
+import java.awt.event.*;
+import java.awt.Font;
 
-	public class FenetreLac extends JFrame implements ActionListener{
+public class FenetreLac extends JFrame implements ActionListener{
 
 	    Animal Aigle;
 	    Animal Renard;
@@ -96,9 +96,9 @@
 		JLabel affAigle = new JLabel(new ImageIcon("./aigle.png"));
 		affAigle.setBounds(230,0,200,80);
 		lac.add(affAigle);
-		JLabel affInsecte = new JLabel(new ImageIcon("./aigle.png"));
-	//	affAigle.setBounds(230,0,200,80);
-		lac.add(affAigle);
+		JLabel affInsecte = new JLabel(new ImageIcon("./insecte.png"));
+		affInsecte.setBounds(70,430,80,80);
+		lac.add(affInsecte);
 
 
 
@@ -132,9 +132,9 @@
 		lac.add(nombreTruites);
 		nombreInsectes = new JLabel();
 		nombreInsectes.setFont(police);
-		nombreInsectes.setText(""+ani4);
-		nombreInsectes.setBounds(630,270,50,50);
-		lac.add(nombreTruites);
+		nombreInsectes.setText(""+ani5);
+		nombreInsectes.setBounds(150,550,50,50);
+		lac.add(nombreInsectes);
 
 
 		 //Affichage température
