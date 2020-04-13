@@ -19,11 +19,42 @@
 
 	    this.popAnimal=new int [d];
 
-	   for(int j=0; j<popAnimal.length; j++){
-			double rand =10*Math.random()+10;
+	int multip=1;
+	int add=1;
+
+	switch (nom) {
+	    case "Aigle":
+		multip=1;
+		add=1;
+		break;
+
+	    case "Renard":
+		multip=6;
+		add=6;
+		break;
+
+	    case "Loutre":
+		multip=4;
+		add=6;
+		break;
+
+	    case "Truite":
+		multip=4;
+		add=10;
+		break;
+
+	    case "Insecte":
+		multip=8;
+		add=6;
+		break;
+
+
+	}
+
+	    for(int j=0; j<popAnimal.length; j++){
+			double rand =multip*Math.random()+add;
 			int rand2 = (int)rand;
 			popAnimal[j]=rand2;
-
 			}
 
 
@@ -91,7 +122,7 @@
 
 		coefsurvie=super.impactTemperature(temp);
 		coefsurvie=super.impactpH(pH);
-		//this.mange(animalmange);
+		this.mange(animalmange);
 
 			popAnimal[1]=SurvieBebe();
 			popAnimal[0]=fecondite*NbAnimauxReproducteurs();
@@ -111,7 +142,7 @@
 		    } 
 		}
 
-
+	    regulation();
 	}
 
 	public void changeGeneration (int temp, int pH) { // changegeneration pour le dernier animal de la chaine alimentaire
@@ -148,8 +179,15 @@
 		    } 
 		}
 
+	    regulation();
 	}
 
+	public void regulation() {
+
+		for(int i=1; i<popAnimal.length; i++){
+		    popAnimal[i]-=0.001*Math.pow((NbTotalAnimaux()),2);
+		}
+	}
 
 
 	public int NbTotalAnimaux () {
@@ -165,7 +203,7 @@
 
 	public boolean famine (){
 
-	    int nbAn=listeNbAn.get(generation)-listeNbAn.get(generation+1);
+	    int nbAn=listeNbAn.get(generation-1)-listeNbAn.get(generation);
 
 	    if (nbAn > 0){
 		return true;
@@ -205,3 +243,5 @@
 
 
 	}
+
+
