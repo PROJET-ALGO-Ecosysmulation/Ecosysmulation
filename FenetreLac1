@@ -184,7 +184,7 @@
 
 
 			Object source = e.getSource();
-
+				
 			Aigle.changeGeneration(temp,pH,Renard);          //En fait c'est mieux de le mettre ici car on change de génération dès qu'on appuie sur un bouton
 			Renard.changeGeneration(temp,pH,Loutre);
 			Loutre.changeGeneration(temp,pH,Truite);
@@ -195,12 +195,13 @@
 			nombreLoutres.setText(""+Loutre.NbTotalAnimaux());
 			nombreTruites.setText(""+Truite.NbTotalAnimaux());
 			nombreInsectes.setText(""+Insecte.NbTotalAnimaux());
-
-			maFenetreExplication.setVisible(true);
-
-
-
+			
+			
+			
+			
+			
 			if (source == lesBoutons[0]) {
+				maFenetreExplication.setVisible(true);
 				if (temp<45){
 					temp +=1;
 					temperature.setText("TEMPERATURE DE L'AIR ACTUELLE: "+temp + " °C");
@@ -210,9 +211,11 @@
 					JOptionPane.showMessageDialog(this,"Vous avez atteint la temperature maximale");
 				}
 				maFenetreExplication.affBouton1(); 
+				
 			}
 
 			if (source == lesBoutons[1]){
+				maFenetreExplication.setVisible(true);
 				if (temp>-10){
 					temp -=1;
 					temperature.setText("TEMPERATURE DE L'AIR ACTUELLE: "+temp + " °C");
@@ -224,6 +227,8 @@
 			}
 
 			if (source == lesBoutons[2]){
+				maFenetreExplication.setVisible(true);
+				
 				if (pH<10){
 					pH +=1;
 					lepH.setText("pH DU LAC:"+pH);
@@ -235,6 +240,8 @@
 			}	
 
 			if (source == lesBoutons[3]) {
+				maFenetreExplication.setVisible(true);
+				
 				if (pH>3){
 					pH -=1;
 
@@ -247,19 +254,25 @@
 
 
 			if (source == lesBoutons[4]) {
+			
 			}
 
-
-
 			if (source == lesBoutons[5])  {
-
+				maFenetreExplication.setVisible(true);
+				Truite.surpeche();
 				affPanneau.setVisible(surpeche);
 				if(surpeche==false)
 					lesBoutons[5].setText("Arreter Surpeche");
 				else
 					lesBoutons[5].setText("Surpeche");
 				surpeche=!surpeche;
+				maFenetreExplication.affBouton5();
 			}
-
+         
+			if (source == lesBoutons[6])  {
+				maFenetreExplication.setVisible(true);
+				Renard.chasse();
+				maFenetreExplication.affBouton6();
 	    }
 	}
+ }
