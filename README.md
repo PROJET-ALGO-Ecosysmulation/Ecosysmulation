@@ -73,5 +73,9 @@
 	public abstract boolean famine ();
 
 	public abstract void afficheliste();
+	
+	public abstract void chasse();
+
+	public abstract void surpeche();
 
 	}
