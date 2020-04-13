@@ -226,6 +226,16 @@
 	    }
 
 	}
+	public void chasse() {
+
+    this.coefsurvie-=0.2;
+
+	}
+
+	public void surpeche(){
+	
+	this.coefsurvie-=0.2;
+	}
 
 
 	public String toString(int nbIte) {
