@@ -13,8 +13,8 @@
 	    Aigle = new Animal ("Aigle", 25,1,0.9,0.9);
 	    Renard = new Animal("Renard",5,7,0.9,0.2);
 	    Loutre = new Animal("Loutre",8,2,0.9,0.5);
-	    Truite = new Animal("Truite",10,2500,0.9,0.01);
-	    Insecte = new Animal(10,2500,0.9,0.01);
+	    Truite = new Animal("Truite",10,1000,0.6,0.01);
+	    Insecte = new Animal(10,2000,0.6,0.01);
 
 		LinkedList<Animal> chaineAlim=new LinkedList<Animal>();
 		chaineAlim.add(Aigle);
@@ -49,3 +49,5 @@
 
 	  }
 	}
+
+
