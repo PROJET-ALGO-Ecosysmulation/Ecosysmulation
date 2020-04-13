@@ -14,6 +14,7 @@
 	    int ani2;
 	    int ani3;
 	    int ani4;
+	    int ani5;
 
 	    JLabel affPanneau;
 	    boolean surpeche;
@@ -23,6 +24,7 @@
 	    JLabel nombreRenards;
 	    JLabel nombreTruites;
 	    JLabel nombreLoutres;
+	    JLabel nombreInsectes;
 	    JLabel temperature;
 		JLabel lepH;
 
@@ -40,7 +42,7 @@
 			Renard = new Animal("Renard",5,7,0.9,0.2);
 		    Loutre = new Animal("Loutre",8,2,0.9,0.5);
 		    Truite = new Animal ("Truite",10,25,0.9,0.7 );
-		Insecte = new Animal (10,25,0.9,0.7 );
+		    Insecte = new Animal (10,25,0.9,0.7 );
 
 
 		setBounds(50,50,1000,800);
@@ -79,6 +81,7 @@
 	       lesBoutons[3].setText("pH -1 ");
 	       lesBoutons[4].setText("Un an plus tard ");
 	       lesBoutons[5].setText("Surpeche");
+	       lesBoutons[6].setText("Chasse");
 
 		//ajout images animaux 
 		JLabel affRenard = new JLabel(new ImageIcon("./renard.png"));
@@ -93,6 +96,9 @@
 		JLabel affAigle = new JLabel(new ImageIcon("./aigle.png"));
 		affAigle.setBounds(230,0,200,80);
 		lac.add(affAigle);
+		JLabel affInsecte = new JLabel(new ImageIcon("./aigle.png"));
+	//	affAigle.setBounds(230,0,200,80);
+		lac.add(affAigle);
 
 
 
@@ -101,6 +107,7 @@
 		ani2 = Renard.NbTotalAnimaux();
 		ani3 = Loutre.NbTotalAnimaux();
 		ani4= Truite.NbTotalAnimaux();
+		ani5= Insecte.NbTotalAnimaux();
 
 		nombreAigles = new JLabel();
 		Font police = new Font(" Arial ",Font.BOLD,20);
@@ -122,6 +129,11 @@
 		nombreTruites.setFont(police);
 		nombreTruites.setText(""+ani4);
 		nombreTruites.setBounds(630,270,50,50);
+		lac.add(nombreTruites);
+		nombreInsectes = new JLabel();
+		nombreInsectes.setFont(police);
+		nombreInsectes.setText(""+ani4);
+		nombreInsectes.setBounds(630,270,50,50);
 		lac.add(nombreTruites);
 
 
@@ -177,11 +189,12 @@
 			Renard.changeGeneration(temp,pH,Loutre);
 			Loutre.changeGeneration(temp,pH,Truite);
 			Truite.changeGeneration(temp,pH,Insecte);
-		Insecte.changeGeneration(temp,pH);
+		    Insecte.changeGeneration(temp,pH);
 			nombreAigles.setText(""+Aigle.NbTotalAnimaux());
 		    nombreRenards.setText(""+Renard.NbTotalAnimaux());
 			nombreLoutres.setText(""+Loutre.NbTotalAnimaux());
 			nombreTruites.setText(""+Truite.NbTotalAnimaux());
+			nombreInsectes.setText(""+Insecte.NbTotalAnimaux());
 
 			maFenetreExplication.setVisible(true);
 
