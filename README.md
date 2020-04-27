@@ -4,7 +4,7 @@
 	public class Animal extends EtreVivant{
 
 	private String nom;
-	private int [] popAnimal;
+	private int [] popAnimal; // tableau avec nb d'animaux selon âge (allant de 0 à durée de vie d'un animal)
 	private double surviebb; //pourcentage survie bb
 	private LinkedList <Integer> listeNbAn;
 	private int generation=0;
@@ -12,7 +12,7 @@
 
 	// Ecrire methode SurvieAnimaux avec méthode mere temperature + changer changement generation après impact temp
 
-	public Animal (String n,/* int A1, int A2, int A3,*/ int d, int f, double c, double s) {
+	public Animal (String n,int d, int f, double c, double s) {
 		super(d,f,c);
 		nom=n;
 		surviebb=s;
@@ -21,46 +21,58 @@
 
 	int multip=1;
 	int add=1;
+	int nb=1;
 
 	switch (nom) {
 	    case "Aigle":
 		multip=1;
 		add=1;
+		nb=5;
 		break;
 
 	    case "Renard":
 		multip=6;
 		add=6;
+		nb=12;
 		break;
 
 	    case "Loutre":
 		multip=4;
 		add=6;
+		nb=12;
 		break;
 
 	    case "Truite":
 		multip=4;
 		add=10;
+		nb=25;
 		break;
 
 	    case "Insecte":
 		multip=8;
 		add=6;
+		nb=100;
 		break;
 
 
 	}
 
 	    for(int j=0; j<popAnimal.length; j++){
+			popAnimal[j]=0;
+	    }
+	    popAnimal[1]=nb;
+
+
+	    /*for(int j=0; j<popAnimal.length; j++){
 			double rand =multip*Math.random()+add;
 			int rand2 = (int)rand;
 			popAnimal[j]=rand2;
-			}
+			}*/
+
 
 
 	    this.listeNbAn = new LinkedList <Integer>();
 	    listeNbAn.add(NbTotalAnimaux());
-
 
 	}
 
@@ -79,7 +91,7 @@
 
 
 	public int SurvieBebe (){
-		double res = popAnimal[0]*surviebb*coefsurvie;// coefsurvie à mettre ou pas? comment bb peuvent être impactés aussi par paramètres ?
+		double res = popAnimal[0]*surviebb;// coefsurvie à mettre ou pas? comment bb peuvent être impactés aussi par paramètres ?
 		int bbsurvie = (int)res;
 
 	return bbsurvie;
@@ -106,14 +118,6 @@
 			int a=popAnimal[1];
 		int b=1;
 
-		/*if (animalmange.nom == Animal.POPFIN){
-		    coefsurvie=animalmange.impactTemperature(temp);
-		    coefsurvie=animalmange.impactpH(pH);
-		}
-
-		if (this.nom == "Renard") {
-		    super.chasse();
-		}*/
 		for(int i=0; i<popAnimal.length; i++){
 		    if (popAnimal[i]<0){
 		    popAnimal[i]=0;
@@ -121,8 +125,11 @@
 		}
 
 		coefsurvie=super.impactTemperature(temp);
+		plafond();
 		coefsurvie=super.impactpH(pH);
+		plafond();
 		this.mange(animalmange);
+		plafond();
 
 			popAnimal[1]=SurvieBebe();
 			popAnimal[0]=fecondite*NbAnimauxReproducteurs();
@@ -135,6 +142,7 @@
 		popAnimal[h]=mo;//modifier ici pour que tous les renards ne survivent pas
 		a=b;
 			}
+		plafond();
 
 		for(int i=0; i<popAnimal.length; i++){
 		    if (popAnimal[i]<0){
@@ -159,7 +167,9 @@
 		}
 
 		coefsurvie=super.impactTemperature(temp);
+		plafond();
 		coefsurvie=super.impactpH(pH);
+		plafond();
 
 			popAnimal[1]=SurvieBebe();
 			popAnimal[0]=fecondite*NbAnimauxReproducteurs();
@@ -172,6 +182,7 @@
 		popAnimal[h]=mo;//modifier ici pour que tous les renards ne survivent pas
 		a=b;
 			}
+		plafond();
 
 		for(int i=0; i<popAnimal.length; i++){
 		    if (popAnimal[i]<0){
@@ -184,20 +195,104 @@
 
 	public void regulation() {
 
-		for(int i=1; i<popAnimal.length; i++){
-		    popAnimal[i]-=0.001*Math.pow((NbTotalAnimaux()),2);
+	    double mu=0;
+	    switch (nom) {
+	    case "Aigle":
+		mu=0.02;
+		break;
+
+	    case "Renard":
+		mu=0.0045;
+		break;
+
+	    case "Loutre":
+		mu=0.0045;
+		break;
+
+	    case "Truite":
+		mu=Math.pow(10,-9);
+		break;
+
+	    case "Insecte":
+		mu=0;
+		break;
+
+
+	    }
+
+
+
+	int oldpopulation = NbTotalAnimaux();
+	double newpopulation = oldpopulation-mu*Math.pow((oldpopulation),2);
+	int popfinale = (int) newpopulation;
+	int differencepop=oldpopulation-popfinale;
+
+	    //Diminuer la population
+	    for (int i = 1; i<popAnimal.length; i++) {
+
+		if ((popAnimal[i] != 0)&&(differencepop!=0)) {
+		    popAnimal[i]-=1;
+		    differencepop-=1;
 		}
+
+	    }
+
 	}
 
 
 	public int NbTotalAnimaux () {
 		int nbtotAn=0;
 
-	for(int j=0; j<popAnimal.length; j++){
-		    nbtotAn += popAnimal[j];
+	    for(int k=0; k<popAnimal.length; k++){
+		    nbtotAn += popAnimal[k];
+	    }    
+
+	    return nbtotAn;
+	}
+
+
+	public void plafond () {
+
+	int oldnbtotAn=NbTotalAnimaux();
+	int newnbtotAn=0;
+
+	    //Pour limiter la population (plafond)
+	    if (oldnbtotAn > 1000) {
+		newnbtotAn=1000;
+	    int diffpop= oldnbtotAn-newnbtotAn;
+
+		 //Diminue la population initiale
+
+		int j=0;
+		while (diffpop!=0) {
+
+		    if (popAnimal[j] != 0) {
+			popAnimal[j]-=1;
+			diffpop-=1;
+		    }
+
+		    if (j==popAnimal.length) {
+		      j=0;  
+		    }
+		    j++;  
+		}
+
+
 	    }
 
-	return nbtotAn;
+	int diffpop= oldnbtotAn-newnbtotAn;
+
+	    //Diminue la population initiale
+	    for (int j = 1; j<popAnimal.length; j++) {
+
+		if ((popAnimal[j] != 0)&&(diffpop!=0)) {
+		    popAnimal[j]-=1;
+		    diffpop-=1;
+		}
+	    }
+
+
+
 	}
 
 
@@ -224,25 +319,27 @@
 		coeffamine=r/rActuel;
 		coefsurvie -= coeffamine;
 	    }
-
+	    plafond();
 	}
+
 	public void chasse() {
 
 	    if (this.nom == "Renard") {
-	    this.coefsurvie-=0.2;
-	    }
-	  
+	    this.coefsurvie-=0.2;}
+	plafond();
+
 	}
 
 	public void surpeche() {
 
 	    if (this.nom == "Truite") {
-	    this.coefsurvie-=0.2;
-	    } 
+	    this.coefsurvie-=0.2;}
+	plafond();
+
 	}
 
 
-	public String toString(int nbIte) {
+	/*public String toString(int nbIte) {
 		String res = new String();
 
 		res = "coefsurvie = "+coefsurvie+ "Population annee "+nbIte+" de "+nom+" : ";
@@ -253,6 +350,7 @@
 
 		return res;
 	}
+	*/
 
 
 
