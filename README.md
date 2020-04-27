@@ -226,15 +226,20 @@
 	    }
 
 	}
-	public void chasse() {
+	public double chasse() {
 
-    this.coefsurvie-=0.2;
+	    if (this.nom == "Renard") {
+	    this.coefsurvie-=0.2;}
 
+	   return coefsurvie;
 	}
 
-	public void surpeche(){
-	
-	this.coefsurvie-=0.2;
+	public double surpeche() {
+
+	    if (this.nom == "Truite") {
+	    this.coefsurvie-=0.2;}
+
+	   return coefsurvie;
 	}
 
 
