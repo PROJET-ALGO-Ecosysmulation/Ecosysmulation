@@ -47,13 +47,10 @@
 
 	    return Math.abs(coefsurvie);
 	}
+	
+	public abstract void chasse();
 
-	public double chasse() {
-
-	    this.coefsurvie-=0.2;
-
-	   return coefsurvie;
-	}
+	public abstract void surpeche();
 
 
 
