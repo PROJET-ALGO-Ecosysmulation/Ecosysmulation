@@ -53,8 +53,6 @@
 	public abstract void surpeche();
 
 
-
-
 	public abstract int SurvieBebe ();
 
 	public abstract int NbAnimauxReproducteurs ();
@@ -63,16 +61,15 @@
 
 	public abstract int NbTotalAnimaux ();
 
-	public abstract String toString(int nbIte);
-
 	public abstract void mange (Animal estMange);
 
 	public abstract boolean famine ();
 
 	public abstract void afficheliste();
-	
-	public abstract void chasse();
 
-	public abstract void surpeche();
+	public abstract void plafond();
+
+	//public abstract String toString(int nbIte);
+
 
 	}
