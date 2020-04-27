@@ -1,37 +1,34 @@
 import javax.swing.*; 
 import java.awt.*; 
-import java.util.LinkedList;
+import java.util.LinkedList; 
 import java.awt.event.*;
 
 
-
 public class FenetreExplication extends JFrame implements ActionListener{
-	
-		JLabel[] lesTextes;
-		JButton reponse;
+
+	JLabel[] lesTextes;
+	JButton reponse;
 
 	public FenetreExplication(){
 
 		this.setTitle("Explication des parametres");
 		this.setLayout(null);
 		this.setSize(750,600);
-		this.setLocation(1000,200);
+		this.setLocation(1100,200);
 		reponse = new JButton();
-        reponse.setBounds(300,500,120,50);
-        reponse.setText("J'ai compris"); 
-        reponse.addActionListener(this);
-        add(reponse); 
-	
- 
+		reponse.setBounds(300,500,120,50);
+		reponse.setText("J'ai compris"); 
+		reponse.addActionListener(this);
+		add(reponse); 
 
 		// Pour empêcher le redimensionnement de la fenêtre
 		this.setResizable(false);
-    
+
 		// Pour cacher la fenêtre à sa création
 		this.setVisible(false);
 	}
-	
-    public void affBouton1 (){
+
+	public void affBouton1 (){
 		
 		lesTextes = new JLabel[10]; 
 		int indice=0;
@@ -50,10 +47,10 @@ public class FenetreExplication extends JFrame implements ActionListener{
 		lesTextes[6].setText("Lac Superieur (Canada, Etats-­Unis) : 1,16 °C ; ");
 		lesTextes[7].setText("Reservoir Kangaroo Creek (Australie) : 1,14 °C ");   
 		lesTextes[8].setText("");  
-	    lesTextes[9].setText("                                   APPUYEZ SUR J'AI COMPRIS");
+		lesTextes[9].setText("                                   APPUYEZ SUR J'AI COMPRIS");
 		
 	}
-	
+
 	public void affBouton2 (){
 		
 		lesTextes = new JLabel[10]; 
@@ -69,14 +66,14 @@ public class FenetreExplication extends JFrame implements ActionListener{
 		lesTextes[2].setText("l'augmentation de la temperature de l'air.");
 		lesTextes[3].setText("");
 		lesTextes[4].setText("");
-	    lesTextes[5].setText("                                   APPUYEZ SUR J'AI COMPRIS");
-	    lesTextes[6].setText("");
+		lesTextes[5].setText("                                   APPUYEZ SUR J'AI COMPRIS");
+		lesTextes[6].setText("");
 		lesTextes[7].setText("");   
 		lesTextes[8].setText("");  
-	    lesTextes[9].setText("");
+		lesTextes[9].setText("");
 		
 	}
-	
+
 	public void affBouton3 (){
 		
 		lesTextes = new JLabel[10]; 
@@ -91,16 +88,15 @@ public class FenetreExplication extends JFrame implements ActionListener{
 		lesTextes[1].setText("L'augmentation du pH de l'eau est du : ");
 		lesTextes[2].setText("            -Aux fondants sur les routes l'hiver");
 		lesTextes[3].setText("            -L'agriculture");
-	    lesTextes[4].setText("            -Le beton des infrastructures qui se desagrege sous la pluie...");
+		lesTextes[4].setText("            -Le beton des infrastructures qui se desagrege sous la pluie...");
 		lesTextes[5].setText("Les conséquences en sont:  ");
 		lesTextes[6].setText("            -La corrosion des tuyaux d'aqueducs, liberants des molecules toxiques dans les lacs");					 
 		lesTextes[7].setText("            -Les fertilisants agricoles se transforment plus facilement en ammoniac ");
 		lesTextes[8].setText("            -Les sels deplacent les nutriments des sols, qui faciliterait la prolifération des algues et une grande diminution de l'oxygène");
 		lesTextes[9].setText("                                   APPUYEZ SUR J'AI COMPRIS");
-		
-		
+				
 	}
-	
+
 	public void affBouton4 (){
 		
 		lesTextes = new JLabel[10]; 
@@ -110,6 +106,7 @@ public class FenetreExplication extends JFrame implements ActionListener{
 			lesTextes[i].setBounds(10,10+i*30,getWidth(),20); 
 			add(lesTextes[i]);       
 		}
+		
 		lesTextes[0].setText("Tant que le pH de l'eau est entre 6,5 à 9,0, les populations évoluent normalement");
 		lesTextes[1].setText("La diminution du pH de l'eau est du : ");
 		lesTextes[2].setText("        -A l'acceleration du controle de la pollution pour contrer les pluies acides");
@@ -122,7 +119,7 @@ public class FenetreExplication extends JFrame implements ActionListener{
 		lesTextes[9].setText("");
 		
 	}
-	
+
 	public void affBouton5 (){
 		
 		lesTextes = new JLabel[10]; 
@@ -144,7 +141,7 @@ public class FenetreExplication extends JFrame implements ActionListener{
 		lesTextes[9].setText("Dans tous les cas, responsabilisons-nous et limitons notre peche");
 		
 	}
-	
+
 	public void affBouton6 (){
 		
 		lesTextes = new JLabel[10]; 
@@ -166,25 +163,24 @@ public class FenetreExplication extends JFrame implements ActionListener{
 		lesTextes[9].setText("	Les chasseurs tuent toute l'annee ce predateur, en agissant ainsi, ils amplifient la propagation des maladies");
 		
 	}
-public void actionPerformed (ActionEvent e){
-		
+	
+	public void actionPerformed (ActionEvent e){
+
 		Object source = e.getSource();
 		
 		if (source == reponse){
 			
 			for(int i=0;i<10;i++){
 			lesTextes[i].setText("");
+			this.setVisible(false);
 			}
 		}
 	}
+	/* public void effaceText (){
 
-	
-/*	public void effaceText (){
-		
 			for(int i=0;i<10;i++){
 			lesTextes[i].setText("iiiiii");
 			}
 	}
 	* */
-		
 }
