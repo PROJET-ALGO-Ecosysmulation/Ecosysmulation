@@ -28,7 +28,7 @@ public class FenetreExplication extends JFrame implements ActionListener{
 		this.setVisible(false);
 	}
 
-	public void affBouton1 (){
+	public void affBouton1 (){                // Affichage quand l'utilisateur appuie sur le bouton d'augmentation de la température
 		
 		lesTextes = new JLabel[10]; 
 		int indice=0;
@@ -51,7 +51,7 @@ public class FenetreExplication extends JFrame implements ActionListener{
 		
 	}
 
-	public void affBouton2 (){
+	public void affBouton2 (){                // Affichage quand l'utilisateur appuie sur le bouton de diminution de la température
 		
 		lesTextes = new JLabel[10]; 
 		int indice=0;
@@ -74,7 +74,7 @@ public class FenetreExplication extends JFrame implements ActionListener{
 		
 	}
 
-	public void affBouton3 (){
+	public void affBouton3 (){                 // Affichage quand l'utilisateur appuie sur le bouton d'augmentation du pH
 		
 		lesTextes = new JLabel[10]; 
 		int indice=0;
@@ -97,7 +97,7 @@ public class FenetreExplication extends JFrame implements ActionListener{
 				
 	}
 
-	public void affBouton4 (){
+	public void affBouton4 (){                // Affichage quand l'utilisateur appuie sur le bouton de diminution du pH
 		
 		lesTextes = new JLabel[10]; 
 		int indice=0;
@@ -120,7 +120,7 @@ public class FenetreExplication extends JFrame implements ActionListener{
 		
 	}
 
-	public void affBouton5 (){
+	public void affBouton5 (){                // Affichage quand l'utilisateur appuie sur le bouton de surpêche
 		
 		lesTextes = new JLabel[10]; 
 		int indice=0;
@@ -130,19 +130,19 @@ public class FenetreExplication extends JFrame implements ActionListener{
 			add(lesTextes[i]);       
 		}
 		lesTextes[0].setText("La peche dans les lacs marque aujourd'hui l'ecosysteme.");
-		lesTextes[1].setText("        -Les pêcheurs sont de mieux en mieux équipés (Sonar ultra precis, meilleur materiel de peche...");
+		lesTextes[1].setText("        -Les pêcheurs sont de mieux en mieux equipes (Sonar ultra precis, meilleur materiel de peche...)");
 		lesTextes[2].setText("        -Des guides proposent maintenant leur service pour amener leurs clients vers les zones les plus proliférantes");
 		lesTextes[3].setText("        -Des meilleures techniques de peche comme la peche à la jig garantissent de pecher ");
 		lesTextes[4].setText("");
 		lesTextes[5].setText("Certaines restrictions sont tout de meme mises en place afin de limiter l'impact");
 		lesTextes[6].setText("         -L'interdiction de la peche pendant les periodes de proliferations");
 		lesTextes[7].setText("         -Des quotas sont instaurés par pecheur");
-		lesTextes[8].setText("");
 		lesTextes[9].setText("Dans tous les cas, responsabilisons-nous et limitons notre peche");
+		lesTextes[9].setText("                                       APPUYEZ SUR J'AI COMPRIS");
 		
 	}
 
-	public void affBouton6 (){
+	public void affBouton6 (){                 // Affichage quand l'utilisateur appuie sur le bouton de surchasse
 		
 		lesTextes = new JLabel[10]; 
 		int indice=0;
@@ -155,12 +155,12 @@ public class FenetreExplication extends JFrame implements ActionListener{
 		lesTextes[1].setText("	La chasse intervient comme element determinant lorsque la population est deja fragilisee");
 		lesTextes[2].setText("les petits predateurs (renard roux, fuine, putois..) sont consideres comme des concurrents genants");        
 		lesTextes[3].setText("	Ils sont classes nuisibles, et sont donc chasses toute l'annee. Cela conduit a une disparition volontaire des petits predateurs");
-		lesTextes[4].setText("");
-		lesTextes[5].setText("	Quant au renard, il est un acteur indispensable de la chaine alimentaire:");
-		lesTextes[6].setText("Il contribue a l'assainissement des populations des autres especes et a la conservation de leur qualite genetique.");
-		lesTextes[7].setText("  Il est un fleau pour les chasseurs et les eleveurs:");
-		lesTextes[8].setText("Il se nourrit des rongeurs et detruit donc les culture, il s'en prend aux animaux laches dans la nature par les chasseurs  ");
-		lesTextes[9].setText("	Les chasseurs tuent toute l'annee ce predateur, en agissant ainsi, ils amplifient la propagation des maladies");
+		lesTextes[4].setText("	Quant au renard, il est un acteur indispensable de la chaine alimentaire:");
+		lesTextes[5].setText("Il contribue a l'assainissement des populations des autres especes et a la conservation de leur qualite genetique.");
+		lesTextes[6].setText("  Il est un fleau pour les chasseurs et les eleveurs:");
+		lesTextes[7].setText("Il se nourrit des rongeurs et detruit donc les culture, il s'en prend aux animaux laches dans la nature par les chasseurs  ");
+		lesTextes[8].setText("	Les chasseurs tuent toute l'annee ce predateur, en agissant ainsi, ils amplifient la propagation des maladies");
+		lesTextes[9].setText("                                        APPUYEZ SUR J'AI COMPRIS");
 		
 	}
 	
@@ -176,11 +176,4 @@ public class FenetreExplication extends JFrame implements ActionListener{
 			}
 		}
 	}
-	/* public void effaceText (){
-
-			for(int i=0;i<10;i++){
-			lesTextes[i].setText("iiiiii");
-			}
-	}
-	* */
 }
