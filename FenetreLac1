@@ -42,7 +42,7 @@ public class FenetreLac extends JFrame implements ActionListener{
 		Renard = new Animal("Renard",5,7,0.9,0.2);
 		Loutre = new Animal("Loutre",8,2,0.9,0.5);
 		Truite = new Animal ("Truite",10,25,0.9,0.7 );
-		Insecte = new Animal (10,25,0.9,0.7 );
+		Insecte = new Animal ("Insecte",10,25,0.9,0.7 );
 
 		setBounds(50,50,1000,800);
 		setLayout(null);
