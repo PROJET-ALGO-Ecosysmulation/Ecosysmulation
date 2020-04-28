@@ -10,7 +10,6 @@
 	private int generation=0;
 	private final static String POPFIN = "Insecte" ;
 
-	// Ecrire methode SurvieAnimaux avec méthode mere temperature + changer changement generation après impact temp
 
 	public Animal (String n,int d, int f, double c, double s) {
 		super(d,f,c);
@@ -118,12 +117,6 @@
 			int a=popAnimal[1];
 		int b=1;
 
-		for(int i=0; i<popAnimal.length; i++){
-		    if (popAnimal[i]<0){
-		    popAnimal[i]=0;
-		    } 
-		}
-
 		coefsurvie=super.impactTemperature(temp);
 		plafond();
 		coefsurvie=super.impactpH(pH);
@@ -159,12 +152,6 @@
 
 	    int a=popAnimal[1];
 	    int b=1;
-
-	    for(int i=0; i<popAnimal.length; i++){
-		    if (popAnimal[i]<0){
-		    popAnimal[i]=0;
-		    } 
-		}
 
 		coefsurvie=super.impactTemperature(temp);
 		plafond();
@@ -265,30 +252,17 @@
 
 		int j=0;
 		while (diffpop!=0) {
-
+		    if (j==popAnimal.length) {
+		      j=0;  
+		    }
 		    if (popAnimal[j] != 0) {
 			popAnimal[j]-=1;
 			diffpop-=1;
-		    }
-
-		    if (j==popAnimal.length) {
-		      j=0;  
 		    }
 		    j++;  
 		}
 
 
-	    }
-
-	int diffpop= oldnbtotAn-newnbtotAn;
-
-	    //Diminue la population initiale
-	    for (int j = 1; j<popAnimal.length; j++) {
-
-		if ((popAnimal[j] != 0)&&(diffpop!=0)) {
-		    popAnimal[j]-=1;
-		    diffpop-=1;
-		}
 	    }
 
 
@@ -315,7 +289,7 @@
 
 	    if (famine()==true){
 		r=estMange.listeNbAn.get(0)/this.listeNbAn.get(0);
-		rActuel=estMange.listeNbAn.get(generation)/this.listeNbAn.get(generation);
+		rActuel=estMange.listeNbAn.get(generation-1)/this.listeNbAn.get(generation-1);
 		coeffamine=r/rActuel;
 		coefsurvie -= coeffamine;
 	    }
@@ -355,5 +329,4 @@
 
 
 	}
-
 
