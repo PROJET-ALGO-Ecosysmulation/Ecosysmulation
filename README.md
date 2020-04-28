@@ -5,10 +5,10 @@
 
 	private String nom;
 	private int [] popAnimal; // tableau avec nb d'animaux selon âge (allant de 0 à durée de vie d'un animal)
-	private double surviebb; //pourcentage survie bb
-	private LinkedList <Integer> listeNbAn;
+	private double surviebb; //pourcentage de bébés qui survivent de l'âge 0 à l'âge 1
+	private LinkedList <Integer> listeNbAn;// liste du nombre total d'animaux à chaque génération
 	private int generation=0;
-	private final static String POPFIN = "Insecte" ;
+	//private final static String POPFIN = "Insecte" ;
 
 
 	public Animal (String n,int d, int f, double c, double s) {
@@ -75,10 +75,10 @@
 
 	}
 
-	public Animal (int d, int f, double c, double s) {
+	/*public Animal (int d, int f, double c, double s) {
 	    this(Animal.POPFIN,d,f,c,s);
 
-	}
+	}*/
 
 	public void afficheliste(){
 	    for (int i=0; i<listeNbAn.size();i++){
@@ -90,7 +90,7 @@
 
 
 	public int SurvieBebe (){
-		double res = popAnimal[0]*surviebb;// coefsurvie à mettre ou pas? comment bb peuvent être impactés aussi par paramètres ?
+		double res = popAnimal[0]*surviebb;
 		int bbsurvie = (int)res;
 
 	return bbsurvie;
@@ -114,7 +114,7 @@
 	    generation +=1;
 	    listeNbAn.add(NbTotalAnimaux());
 
-			int a=popAnimal[1];
+	    int a=popAnimal[1];
 		int b=1;
 
 		coefsurvie=super.impactTemperature(temp);
@@ -124,20 +124,20 @@
 		this.mange(animalmange);
 		plafond();
 
-			popAnimal[1]=SurvieBebe();
-			popAnimal[0]=fecondite*NbAnimauxReproducteurs();
+	    popAnimal[1]=SurvieBebe();
+	    popAnimal[0]=fecondite*NbAnimauxReproducteurs();
 
-
+	    //Application du coefsurvie
 		for(int h=2; h<popAnimal.length; h++){
 		b=popAnimal[h];
 		double m= a*coefsurvie;
 		int mo=(int)m;
-		popAnimal[h]=mo;//modifier ici pour que tous les renards ne survivent pas
+		popAnimal[h]=mo;
 		a=b;
-			}
+	    }
 		plafond();
 
-		for(int i=0; i<popAnimal.length; i++){
+		for(int i=0; i<popAnimal.length; i++){//Si le nombre d'animal devient négatif, le mettre à 0
 		    if (popAnimal[i]<0){
 		    popAnimal[i]=0;
 		    } 
@@ -158,20 +158,20 @@
 		coefsurvie=super.impactpH(pH);
 		plafond();
 
-			popAnimal[1]=SurvieBebe();
-			popAnimal[0]=fecondite*NbAnimauxReproducteurs();
+	    popAnimal[1]=SurvieBebe();
+	    popAnimal[0]=fecondite*NbAnimauxReproducteurs();
 
-
+	    //Application du coefsurvie
 		for(int h=2; h<popAnimal.length; h++){
 		b=popAnimal[h];
 		double m= a*coefsurvie;
 		int mo=(int)m;
-		popAnimal[h]=mo;//modifier ici pour que tous les renards ne survivent pas
+		popAnimal[h]=mo;
 		a=b;
 			}
 		plafond();
 
-		for(int i=0; i<popAnimal.length; i++){
+		for(int i=0; i<popAnimal.length; i++){//Si le nombre d'animal devient négatif, le mettre à 0
 		    if (popAnimal[i]<0){
 		    popAnimal[i]=0;
 		    } 
@@ -329,4 +329,3 @@
 
 
 	}
-
