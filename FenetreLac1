@@ -1,33 +1,30 @@
 import javax.swing.*;
-import java.awt.Color;  
+import java.awt.Color.*;  
 import java.awt.event.*;
-import java.awt.Font;
+import java.awt.Font.*;
+import java.awt.*; 
 
-//import java.awt.*; ////
-
-public class FenetreLac extends JFrame implements ActionListener{
+public class FenetreLac extends JFrame implements ActionListener {
 	
 	Animal Aigle;
 	Animal Renard;
 	Animal Loutre;
 	Animal Truite; 
 	Animal Insecte;
-	int ani1;  // nombre d'animaux classés selon la chaîne alimentaire
+	// nombre d'animaux classés selon la chaîne alimentaire
+	int ani1; 
 	int ani2;
 	int ani3;
 	int ani4;
 	int ani5;
 
 	JLabel affPanneau;
-	boolean panneauSurpeche;
+	boolean panneauSurpeche;  //pour gérer l'affichage du panneau interdiction peche
 	JLabel affRenard;
 	JLabel affTruite;
 	JLabel affLoutre; 
 	JLabel affInsecte; 
 	JLabel affAigle;  
-	
-
-	JButton[] lesBoutons;
 	JLabel nombreAigles;
 	JLabel nombreRenards;
 	JLabel nombreTruites;
@@ -35,7 +32,8 @@ public class FenetreLac extends JFrame implements ActionListener{
 	JLabel nombreInsectes;
 	JLabel temperature;
 	JLabel lepH;
-
+	JButton[] lesBoutons;
+	
 	int temp;
 	int pH;
 	FenetreExplication maFenetreExplication;
@@ -44,6 +42,8 @@ public class FenetreLac extends JFrame implements ActionListener{
 	public FenetreLac() {
 		
 		super("                                                                 Modelisation du lac");
+		
+		//création de chaque population d'animaux
 		Aigle = new Animal ("Aigle", 25,1,0.9,0.7  );
 		Renard = new Animal("Renard",5,7,0.9,0.2);
 		Loutre = new Animal("Loutre",8,2,0.9,0.5);
@@ -111,15 +111,12 @@ public class FenetreLac extends JFrame implements ActionListener{
 		affInsecte.setBounds(70,400,80,80);
 		lac.add(affInsecte);
 
-
-
-		//étiquette indiquand le nombre d'animaux
+		//placement des étiquettes indiquant le nombre d'animaux dans chaque population
 		ani1 = Aigle.NbTotalAnimaux();
 		ani2 = Renard.NbTotalAnimaux();
 		ani3 = Loutre.NbTotalAnimaux();
 		ani4= Truite.NbTotalAnimaux();
 		ani5= Insecte.NbTotalAnimaux();
-
 		nombreAigles = new JLabel();
 		Font police = new Font(" Arial ",Font.BOLD,20);
 		nombreAigles.setFont(police);
@@ -147,7 +144,6 @@ public class FenetreLac extends JFrame implements ActionListener{
 		nombreInsectes.setBounds(90,450,50,50);
 		lac.add(nombreInsectes);
 
-
 		//Affichage température
 		temp = 15;
 		temperature = new JLabel();
@@ -170,13 +166,13 @@ public class FenetreLac extends JFrame implements ActionListener{
 		affPanneau = new JLabel(new ImageIcon("./peche_interdite.png"));
 		affPanneau.setBounds(680,300,180,250);
 		lac.add(affPanneau);
-		//affPanneau.setVisible(false);
 
 		//ajout image lac
 		JLabel affLac = new JLabel(new ImageIcon("./lacPhoto.jpg"));
 		affLac.setBounds(0,0,900,500);
 		lac.add(affLac);
 
+		//instantiation de la fenetre de regle et de la fenetre d'explication
 		maFenetreExplication = new FenetreExplication();
 		maFenetreRegles = new FenetreRegles();
 
@@ -185,7 +181,8 @@ public class FenetreLac extends JFrame implements ActionListener{
 
 	}
 	
-	public void mortPopulation (Animal a){          // Suppression de l'image de l'animal lorsque sa population est décimée
+	// Suppression de l'image de l'animal lorsque sa population est décimée
+	public void mortPopulation (Animal a){          
 		if (a.NbTotalAnimaux() == 0){
 			if (a ==Renard){
 				affRenard.setVisible (false); 
@@ -210,112 +207,109 @@ public class FenetreLac extends JFrame implements ActionListener{
 		}
 	}
 	
-
+	// gère les actions de l'utilisateur avec les boutons
 	public void actionPerformed(ActionEvent e) {
 		
-	Object source = e.getSource();
+		Object source = e.getSource();
+			
+		// permet de fermer la fenetre d'explication des regles si l'utilsateur commence la simulation sans avoir appuyé sur Ok j'ai lu les consignes
+		maFenetreRegles.setVisible(false);
 		
-	// permet de fermer la fenetre d'explication des regles si l'utilsateur commence la simulation sans avoir appuyé sur j'ai compris
-	maFenetreRegles.setVisible(false);
-	
-	maFenetreExplication.supprimerText();
+		// permet de supprimer les explications si l'utilisateur n'a pas appuyé sur j'ai compris
+		maFenetreExplication.supprimerText();
 
-	// affiche le nb de truites dans le terminal
-	Loutre.afficheliste(); 
-	System.out.println();
-
-	// changement de generation des que l'on appuie sur un bouton	
-	Aigle.changeGeneration(temp,pH,Renard);         
-	Renard.changeGeneration(temp,pH,Loutre);
-	Loutre.changeGeneration(temp,pH,Truite);
-	Truite.changeGeneration(temp,pH,Insecte);
-	Insecte.changeGeneration(temp,pH);
-	nombreAigles.setText(""+Aigle.NbTotalAnimaux());
-	nombreRenards.setText(""+Renard.NbTotalAnimaux());
-	nombreLoutres.setText(""+Loutre.NbTotalAnimaux());
-	nombreTruites.setText(""+Truite.NbTotalAnimaux());
-	nombreInsectes.setText(""+Insecte.NbTotalAnimaux());
-	
-	mortPopulation(Aigle);
-	mortPopulation(Renard);
-	mortPopulation(Loutre);
-	mortPopulation(Insecte);
-	mortPopulation(Truite);
-	
-	
-	maFenetreExplication.setVisible(false);
-	
-	
-	if (source == lesBoutons[0]) {
-		maFenetreExplication.setVisible(true);
-		if (temp<45){
-			temp +=1;
-			temperature.setText("TEMPERATURE DE L'AIR ACTUELLE: "+temp + " °C");
-		}
-		if (temp>=45){
-			JOptionPane.showMessageDialog(this,"Vous avez atteint la temperature maximale");
-		}
-		maFenetreExplication.affBouton1(); 
-	}
-
-	if (source == lesBoutons[1]){
-		maFenetreExplication.setVisible(true);
-		if (temp>-10){
-			temp -=1;
-			temperature.setText("TEMPERATURE DE L'AIR ACTUELLE: "+temp + " °C");
-		}
-		if (temp<=-10){
-			JOptionPane.showMessageDialog(this,"Vous avez atteint la temperature minimale");
-		}
-		maFenetreExplication.affBouton2();
-	}
-
-	if (source == lesBoutons[2]){
-		maFenetreExplication.setVisible(true);
+		// changement de generation des que l'on appuie sur un bouton	
+		Aigle.changeGeneration(temp,pH,Renard);         
+		Renard.changeGeneration(temp,pH,Loutre);
+		Loutre.changeGeneration(temp,pH,Truite);
+		Truite.changeGeneration(temp,pH,Insecte);
+		Insecte.changeGeneration(temp,pH);
+		nombreAigles.setText(""+Aigle.NbTotalAnimaux());
+		nombreRenards.setText(""+Renard.NbTotalAnimaux());
+		nombreLoutres.setText(""+Loutre.NbTotalAnimaux());
+		nombreTruites.setText(""+Truite.NbTotalAnimaux());
+		nombreInsectes.setText(""+Insecte.NbTotalAnimaux());
 		
-		if (pH<10){
-			pH +=1;
-			lepH.setText("pH DU LAC:"+pH);
-		}
-		if (pH>=12){
-			JOptionPane.showMessageDialog(this,"Vous avez atteint le pH maximal");
-		}
-		maFenetreExplication.affBouton3();	
-	}	
-
-	if (source == lesBoutons[3]) {
-		maFenetreExplication.setVisible(true);
+		mortPopulation(Aigle);
+		mortPopulation(Renard);
+		mortPopulation(Loutre);
+		mortPopulation(Insecte);
+		mortPopulation(Truite);
 		
-		if (pH>3){
-			pH -=1;
+		maFenetreExplication.setVisible(false);
+		
+		// changement du paramètre correspondant au bonton sur lequel l'utilisateur a apppuyé et affichage de l'explication
+		if (source == lesBoutons[0]) {
+			maFenetreExplication.setVisible(true);
+			if (temp<45){
+				temp +=1;
+				temperature.setText("TEMPERATURE DE L'AIR ACTUELLE: "+temp + " °C");
+			}
+			if (temp>=45){
+				JOptionPane.showMessageDialog(this,"Vous avez atteint la temperature maximale");
+			}
+			maFenetreExplication.affBouton1(); 
 		}
-		if (pH<=1){
-			JOptionPane.showMessageDialog(this,"Vous avez atteint le pH minimal");
+
+		if (source == lesBoutons[1]){
+			maFenetreExplication.setVisible(true);
+			if (temp>-10){
+				temp -=1;
+				temperature.setText("TEMPERATURE DE L'AIR ACTUELLE: "+temp + " °C");
+			}
+			if (temp<=-10){
+				JOptionPane.showMessageDialog(this,"Vous avez atteint la temperature minimale");
+			}
+			maFenetreExplication.affBouton2();
 		}
-		maFenetreExplication.affBouton4();
-	}
+
+		if (source == lesBoutons[2]){
+			maFenetreExplication.setVisible(true);
+			
+			if (pH<10){
+				pH +=1;
+				lepH.setText("pH DU LAC:"+pH);
+			}
+			if (pH>=12){
+				JOptionPane.showMessageDialog(this,"Vous avez atteint le pH maximal");
+			}
+			maFenetreExplication.affBouton3();	
+		}	
+
+		if (source == lesBoutons[3]) {
+			maFenetreExplication.setVisible(true);
+			
+			if (pH>3){
+				pH -=1;
+			}
+			if (pH<=1){
+				JOptionPane.showMessageDialog(this,"Vous avez atteint le pH minimal");
+			}
+			maFenetreExplication.affBouton4();
+		}
 
 
-	if (source == lesBoutons[4]) {
-	
-	}
+		if (source == lesBoutons[4]) {
+		
+		}
 
-	if (source == lesBoutons[5])  {
-		maFenetreExplication.setVisible(true);
-		Truite.surpeche();
-		affPanneau.setVisible(panneauSurpeche);
-		if(panneauSurpeche==false)
-			lesBoutons[5].setText("Arreter Surpeche");
-		else
-			lesBoutons[5].setText("Surpeche");
-		panneauSurpeche=!panneauSurpeche;
-		maFenetreExplication.affBouton5();
-	}
- 
-	if (source == lesBoutons[6])  {
-		maFenetreExplication.setVisible(true);
-		Renard.chasse();
-		maFenetreExplication.affBouton6();
-	}
+		if (source == lesBoutons[5])  {
+			maFenetreExplication.setVisible(true);
+			Truite.surpeche();
+			affPanneau.setVisible(panneauSurpeche);
+			if(panneauSurpeche==false)
+				lesBoutons[5].setText("Arreter Surpeche");
+			else
+				lesBoutons[5].setText("Surpeche");
+			panneauSurpeche=!panneauSurpeche;
+			maFenetreExplication.affBouton5();
+		}
+	 
+		if (source == lesBoutons[6])  {
+			maFenetreExplication.setVisible(true);
+			Renard.chasse();
+			maFenetreExplication.affBouton6();
+		}
 	}
  }
+
