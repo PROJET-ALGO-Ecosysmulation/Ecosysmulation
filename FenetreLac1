@@ -193,7 +193,7 @@ public class FenetreLac extends JFrame implements ActionListener {
 	}
 	
 	// Suppression de l'image de l'animal lorsque sa population est décimée
-	public void MortPopulation (Animal a){          
+	public void mortPopulation (Animal a){          
 		if (a.NbTotalAnimaux() == 0){
 			if (a ==renard){
 				affRenard.setVisible (false); 
@@ -219,7 +219,7 @@ public class FenetreLac extends JFrame implements ActionListener {
 	}
 	
 	// Indication de la fin de la simulation 
-	public void FinSimulation (Animal a, Animal b, Animal c, Animal d, Animal e){
+	public void finSimulation (Animal a, Animal b, Animal c, Animal d, Animal e){
 		boolean a1 = false;
 		boolean a2 = false;
 		boolean a3 = false;
@@ -269,13 +269,13 @@ public class FenetreLac extends JFrame implements ActionListener {
 		nombreTruites.setText(""+truite.NbTotalAnimaux());
 		nombreInsectes.setText(""+insecte.NbTotalAnimaux());
 		
-		MortPopulation(aigle);
-		MortPopulation(renard);
-		MortPopulation(loutre);
-		MortPopulation(insecte);
-		MortPopulation(truite);
+		mortPopulation(aigle);
+		mortPopulation(renard);
+		mortPopulation(loutre);
+		mortPopulation(insecte);
+		mortPopulation(truite);
 		
-		FinSimulation (aigle, renard, loutre, truite, insecte);
+		finSimulation (aigle, renard, loutre, truite, insecte);
 		
 		maFenetreExplication.setVisible(false);
 		
