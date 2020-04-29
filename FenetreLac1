@@ -49,7 +49,7 @@ public class FenetreLac extends JFrame implements ActionListener {
 
 	public FenetreLac() {
 		
-		super("                                                                 Modelisation du lac");
+		super("                                   Modelisation du lac");
 		
 		//création de chaque population d'animaux
 		aigle = new Animal ("Aigle", 25,1,0.9,0.7  );
@@ -129,27 +129,27 @@ public class FenetreLac extends JFrame implements ActionListener {
 		Font police = new Font(" Arial ",Font.BOLD,20);
 		nombreAigles.setFont(police);
 		nombreAigles.setText(""+ani1);
-		nombreAigles.setBounds(280,10,100,100);
+		nombreAigles.setBounds(280,10,80,50);
 		lac.add(nombreAigles);
 		nombreRenards = new JLabel();
 		nombreRenards.setFont(police);
 		nombreRenards.setText(""+ani2);
-		nombreRenards.setBounds(150,300,100,100);
+		nombreRenards.setBounds(150,300,80,50);
 		lac.add(nombreRenards);
 		nombreLoutres = new JLabel();
 		nombreLoutres.setFont(police);
 		nombreLoutres.setText(""+ani3);
-		nombreLoutres.setBounds(480,430,100,100);
+		nombreLoutres.setBounds(480,430,80,50);
 		lac.add(nombreLoutres);
 		nombreTruites = new JLabel();
 		nombreTruites.setFont(police);
 		nombreTruites.setText(""+ani4);
-		nombreTruites.setBounds(630,270,100,100);
+		nombreTruites.setBounds(630,270,80,50);
 		lac.add(nombreTruites);
 		nombreInsectes = new JLabel();
 		nombreInsectes.setFont(police);
 		nombreInsectes.setText(""+ani5);
-		nombreInsectes.setBounds(90,450,100,100);
+		nombreInsectes.setBounds(90,450,80,50);
 		lac.add(nombreInsectes);
 
 		//Affichage température
