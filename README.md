@@ -1,12 +1,14 @@
-import javax.swing.*; import java.awt.*; import java.util.LinkedList; import java.awt.event.*;
-
 /** Cette classe permet d'afficher les explications une fois 
  * que l'utilisateur clique sur le paramètre qu'il veut changer
- */
-public class FenetreExplication extends JFrame implements ActionListener{
+ */	
+	
+	import javax.swing.*; import java.awt.*; import java.util.LinkedList; import java.awt.event.*;
 
-JLabel[] lesTextes;
-JButton reponse;
+
+	public class FenetreExplication extends JFrame implements ActionListener{
+
+	JLabel[] lesTextes;
+	JButton reponse;
 
 	public FenetreExplication(){
 
