@@ -69,31 +69,27 @@ public class FenetreExplication extends JFrame implements ActionListener{
 		lesTextes[9].setText("");
 	}
 
-	public void affBouton3 (){
-			
+		public void affBouton3 (){
 		lesTextes[0].setText("Tant que le pH de l'eau est entre 6,0 et 8,0, les populations evoluent normalement ");
-		lesTextes[1].setText("L'augmentation du pH de l'eau est du : ");
-		lesTextes[2].setText("            -Aux fondants sur les routes l'hiver");
-		lesTextes[3].setText("            -L'agriculture");
-		lesTextes[4].setText("            -Le beton des infrastructures qui se desagrege sous la pluie...");
-		lesTextes[5].setText("Les consequences en sont:  ");
-		lesTextes[6].setText("            -La corrosion des tuyaux d'aqueducs, liberants des molecules toxiques dans les lacs");					 
-		lesTextes[7].setText("            -Les fertilisants agricoles se transforment plus facilement en ammoniac ");
-		lesTextes[8].setText("");
+	    lesTextes[1].setText("Sinon les animaux aquatiques meurent, impactant les autres animaux de l'ecosysteme qui se nourrissent d'eux.");
+	    lesTextes[2].setText("De plus, certains boivent l'eau du lac dont le pH est maintenant trop élevé, ce qui les tue.");
+		lesTextes[3].setText("L'augmentation du pH de l'eau est du : ");
+		lesTextes[4].setText("            -Aux fondants sur les routes l'hiver");
+		lesTextes[5].setText("            -L'agriculture");
+		lesTextes[6].setText("            -Le beton des infrastructures qui se desagrege sous la pluie...");
+		lesTextes[7].setText("Les consequences en sont:  ");
+		lesTextes[8].setText("            -La corrosion des tuyaux d'aqueducs, liberants des molecules toxiques dans les lacs");					 
+		lesTextes[9].setText("            -Les fertilisants agricoles se transforment plus facilement en ammoniac ");
 	}
 
-	public void affBouton4 (){
-			
+	public void affBouton4 (){	
 		lesTextes[0].setText("Tant que le pH de l'eau est entre 6,0 et 8,0, les populations évoluent normalement");
-		lesTextes[1].setText("La diminution du pH de l'eau est du : ");
-		lesTextes[2].setText("        -A l'acceleration du controle de la pollution pour contrer les pluies acides");
-		lesTextes[3].setText("        -Les deux tiers des cours d'eau aux Etats-Unis ont connu une alcanisation au début des annees 60.");
-		lesTextes[4].setText("");
-		lesTextes[5].setText("");
+	    lesTextes[1].setText("Sinon les animaux aquatiques meurent, impactant les autres animaux de l'ecosysteme qui se nourrissent d'eux.");
+	    lesTextes[2].setText("De plus, certains boivent l'eau du lac dont le pH est maintenant trop bas, ce qui les tue.");
+		lesTextes[3].setText("La diminution du pH de l'eau est du : ");
+		lesTextes[4].setText("        -A l'acceleration du controle de la pollution pour contrer les pluies acides");
+		lesTextes[5].setText("        -Les deux tiers des cours d'eau aux Etats-Unis ont connu une alcanisation au début des annees 60.");
 		lesTextes[6].setText("");
-		lesTextes[7].setText("");
-		lesTextes[8].setText("");
-		lesTextes[9].setText("");
 	}
 
 	public void affBouton5 (){
