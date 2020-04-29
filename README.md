@@ -6,10 +6,10 @@
 	public class Animal extends EtreVivant{
 
 	private String nom;
-	private int [] popAnimal; // tableau avec nb d'animaux selon âge (allant de 0 à durée de vie d'un animal)
-	private double surviebb; //pourcentage de bébés qui survivent de l'âge 0 à l'âge 1
-	private LinkedList <Integer> listeNbAn;// liste du nombre total d'animaux à chaque génération
-	private int generation=0; //permet de savoir à quelle génération on est
+	private int [] popAnimal; // Tableau avec nb d'animaux selon âge (allant de 0 à durée de vie d'un animal)
+	private double surviebb; //Pourcentage de bébés qui survivent de l'âge 0 à l'âge 1
+	private LinkedList <Integer> listeNbAn;// Liste du nombre total d'animaux à chaque génération
+	private int generation=0; //Permet de savoir à quelle génération on est
 	//private final static String POPFIN = "Insecte" ;
 
 
@@ -58,7 +58,7 @@
 
 	}*/
 
-	    for(int j=0; j<popAnimal.length; j++){ //initialisation du tableau à zéro
+	    for(int j=0; j<popAnimal.length; j++){ //Initialisation du tableau à zéro
 			popAnimal[j]=0;
 	    }
 	    popAnimal[1]=nb; //On initialize la case des animaux âgés de 1 an à un nombre que nous avons choisi
@@ -72,7 +72,7 @@
 
 
 
-	    this.listeNbAn = new LinkedList <Integer>(); //initialisation du tableau contenant le nombre total d'animaux de chaque espèce
+	    this.listeNbAn = new LinkedList <Integer>(); //Initialisation du tableau contenant le nombre total d'animaux de chaque espèce
 	    listeNbAn.add(NbTotalAnimaux());
 
 	}
@@ -82,7 +82,7 @@
 
 	}*/
 
-	public void afficheliste(){ //permet d'afficher le nombre total d'individu de chaque espèce
+	public void afficheliste(){ //Permet d'afficher le nombre total d'individu de chaque espèce
 	    for (int i=0; i<listeNbAn.size();i++){
 		System.out.print("Population totale "+i+" : "+listeNbAn.get(i));
 		System.out.println();
@@ -98,7 +98,7 @@
 	return bbsurvie;
 	}
 
-	public int NbAnimauxReproducteurs (){ //permet de caculer le nombre d'animaux reproducteurs (animaux âgés de plus d'un an (1 an compris))
+	public int NbAnimauxReproducteurs (){ //Permet de caculer le nombre d'animaux reproducteurs (animaux âgés de plus d'un an (1 an compris))
 		int sumAnAd = 0; //Animaux pouvant s'accoupler
 
 	    for(int j=1; j<popAnimal.length; j++){
@@ -106,12 +106,12 @@
 	    }
 
 	    double conv = sumAnAd*0.5;
-	    int nbAnRep = (int)conv; //coef à modifier en fonction du pourcentage de femelles
+	    int nbAnRep = (int)conv; //Coef à modifier en fonction du pourcentage de femelles
 
 	    return nbAnRep; 
 	}
 
-	public void changeGeneration (int temp, int pH, Animal animalmange) { //permet de passer à la géération suivante en prenant en 											compte toutes les méthodes pouvant altérer la population
+	public void changeGeneration (int temp, int pH, Animal animalmange) { //Permet de passer à la géération suivante en prenant en 											compte toutes les méthodes pouvant altérer la population
 
 	    generation +=1;
 	    listeNbAn.add(NbTotalAnimaux());
@@ -120,14 +120,14 @@
 		int b=1;
 
 		coefsurvie=super.impactTemperature(temp);
-		plafond(); //permet de ne pas dépasser une valeur seuil (1 000 individus) 
+		plafond(); //Permet de ne pas dépasser une valeur seuil (1 000 individus) 
 		coefsurvie=super.impactpH(pH);
 		plafond();
 		this.mange(animalmange);
 		plafond();
 
 	    popAnimal[1]=SurvieBebe();
-	    popAnimal[0]=fecondite*NbAnimauxReproducteurs(); //calcul le nombre de bébés en fonction de nombre d'animaux reproducteurs
+	    popAnimal[0]=fecondite*NbAnimauxReproducteurs(); //Calcul le nombre de bébés en fonction de nombre d'animaux reproducteurs
 
 	    //Application du coefsurvie et gai d'une année de tous les animaux d'un an ou plus
 		for(int h=2; h<popAnimal.length; h++){
@@ -145,7 +145,7 @@
 		    } 
 		}
 
-	    regulation(); //permet de réguler la population pour qu'il n'y ait pas trop d'individu
+	    regulation(); //Permet de réguler la population pour qu'il n'y ait pas trop d'individu
 	}
 
 	public void changeGeneration (int temp, int pH) { // changeGeneration pour le dernier animal de la chaine alimentaire
@@ -182,7 +182,7 @@
 	    regulation();
 	}
 
-	public void regulation() {//défini les coefficients de régulation pour chaque animal
+	public void regulation() { //Défini les coefficients de régulation pour chaque animal
 
 	    double mu=0;
 	    switch (nom) {
@@ -210,11 +210,11 @@
 
 
 	int oldpopulation = NbTotalAnimaux();
-	double newpopulation = oldpopulation-mu*Math.pow((oldpopulation),2);
+	double newpopulation = oldpopulation-mu*Math.pow((oldpopulation),2); //Application du coefficient de régulation
 	int popfinale = (int) newpopulation;
-	int differencepop=oldpopulation-popfinale;
-
-	    //Diminuer la population
+	int differencepop=oldpopulation-popfinale; //Calcul le nombre d'animaux en trop 
+	
+	    //Diminue la population en fonction du nombre d'animaux en trop
 	    for (int i = 1; i<popAnimal.length; i++) {
 
 		if ((popAnimal[i] != 0)&&(differencepop!=0)) {
@@ -227,7 +227,7 @@
 	}
 
 
-	public int NbTotalAnimaux () {
+	public int NbTotalAnimaux () { //Calcul le nombre total d'individus d'une espèce
 		int nbtotAn=0;
 
 	    for(int k=0; k<popAnimal.length; k++){
@@ -238,65 +238,59 @@
 	}
 
 
-	public void plafond () {
+	public void plafond () { //permet de mettre en place une valeur seuil pour éviter qu'il y ait trop d'animaux
 
 	int oldnbtotAn=NbTotalAnimaux();
 	int newnbtotAn=0;
 
-	    //Pour limiter la population (plafond)
-	    if (oldnbtotAn > 1000) {
-		newnbtotAn=1000;
-	    int diffpop= oldnbtotAn-newnbtotAn;
+	//Pour limiter la population (plafond)
+		if (oldnbtotAn > 1000) {
+			newnbtotAn=1000;
+	 		int diffpop= oldnbtotAn-newnbtotAn;
 
-		 //Diminue la population initiale
-
-		int j=0;
-		while (diffpop!=0) {
-		    if (j==popAnimal.length) {
-		      j=0;  
-		    }
-		    if (popAnimal[j] != 0) {
-			popAnimal[j]-=1;
-			diffpop-=1;
-		    }
-		    j++;  
-		}
-
-
-	    }
-
-
-
+			//Diminue la population initiale
+			int j=0;
+			while (diffpop!=0) {
+				 if (j==popAnimal.length) {
+					j=0;  
+				 }
+				if (popAnimal[j] != 0) {
+					popAnimal[j]-=1;
+					diffpop-=1;
+				}
+			j++;  
+			}
+	    	}
 	}
 
 
-	public boolean famine (){
-
+	public boolean famine (){ //Vérifie si le nombre d'individu d'une espèce à diminué
 	    int nbAn=listeNbAn.get(generation-1)-listeNbAn.get(generation);
 
 	    if (nbAn > 0){
 		return true;
-	    } else { return false; }
-
+	    } else { 
+	    	return false; 
+	    }
 	}
 
 
 
-	public void mange (Animal estMange){
+	public void mange (Animal estMange){ //Permet de faire mourrir des individus d'une espèce s'il n'y a pas assez à manger
 	    double coeffamine=0;
-	    double r =0;
-	    double rActuel;
+	    double r =0; //Rapport à la génération 0 entre proies et prédateurs
+	    double rActuel; //Rapport à la génération actuelle entre proies et prédateurs
 
 	    if (famine()==true){
-		r=estMange.listeNbAn.get(0)/this.listeNbAn.get(0);
-		rActuel=estMange.listeNbAn.get(generation-1)/this.listeNbAn.get(generation-1);
-		coeffamine=r/rActuel;
-		coefsurvie -= coeffamine;
+		r=estMange.listeNbAn.get(0)/this.listeNbAn.get(0);  //Cacul du rapport à la génération 0 entre proies et prédateurs
+		rActuel=estMange.listeNbAn.get(generation-1)/this.listeNbAn.get(generation-1); //Cacul du rapport à la génération 													actuelle entre proies et prédateurs
+		coeffamine=r/rActuel; //Comparaison des rapports
+		coefsurvie -= coeffamine; //Modification du coefficient de survie en fonction de s'il y a beaucoup de manque de 						    nourriture ou pas
 	    }
 	    plafond();
 	}
 
-	public void chasse() {
+	public void chasse() { //Permet d'introduire la chasse des renards
 
 	    if (this.nom == "Renard") {
 	    this.coefsurvie-=0.2;}
@@ -304,7 +298,7 @@
 
 	}
 
-	public void surpeche() {
+	public void surpeche() { //Permet d'introduire la pêche des truites
 
 	    if (this.nom == "Truite") {
 	    this.coefsurvie-=0.2;}
