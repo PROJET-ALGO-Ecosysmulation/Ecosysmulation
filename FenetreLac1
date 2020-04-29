@@ -1,13 +1,12 @@
-/** Cette classe permet d'afficher la simulation et la modification de l'écosystème 
-	 *  selon le choix de l'utilisateur  
-	 */
-	 
 import javax.swing.*;
 import java.awt.Color.*;  
 import java.awt.event.*;
 import java.awt.Font.*;
 import java.awt.*; 
 
+	/** Cette classe permet d'afficher la simulation et la modification de l'écosystème 
+	 *  selon le choix de l'utilisateur  
+	 */
 public class FenetreLac extends JFrame implements ActionListener {
 	
 	// création des animaux 
@@ -56,11 +55,11 @@ public class FenetreLac extends JFrame implements ActionListener {
 		super("                                   Modelisation du lac");
 		
 		//création de chaque population d'animaux
-		aigle = new Animal ("Aigle",25,2,0.9,1);
+		aigle = new Animal ("Aigle", 25,1,0.9,0.7  );
 		renard = new Animal("Renard",5,7,0.9,0.2);
-		loutre = new Animal("Loutre",8,2,0.9,0.7);
-		truite = new Animal ("Truite",10,5,0.6,0.6);
-		insecte = new Animal ("Insecte",10,25,0.9,0.7);
+		loutre = new Animal("Loutre",8,2,0.9,0.5);
+		truite = new Animal ("Truite",10,25,0.9,0.7 );
+		insecte = new Animal ("Insecte",10,25,0.9,0.7 );
 
 		setBounds(50,50,1000,800);
 		setLayout(null);
@@ -124,11 +123,11 @@ public class FenetreLac extends JFrame implements ActionListener {
 		lac.add(affInsecte);
 
 		//placement des étiquettes indiquant le nombre d'animaux dans chaque population
-		ani1 = aigle.NbTotalAnimaux();
-		ani2 = renard.NbTotalAnimaux();
-		ani3 = loutre.NbTotalAnimaux();
-		ani4= truite.NbTotalAnimaux();
-		ani5= insecte.NbTotalAnimaux();
+		ani1 = aigle.nbTotalAnimaux();
+		ani2 = renard.nbTotalAnimaux();
+		ani3 = loutre.nbTotalAnimaux();
+		ani4= truite.nbTotalAnimaux();
+		ani5= insecte.nbTotalAnimaux();
 		nombreAigles = new JLabel();
 		Font police = new Font(" Arial ",Font.BOLD,20);
 		nombreAigles.setFont(police);
@@ -195,7 +194,7 @@ public class FenetreLac extends JFrame implements ActionListener {
 	
 	// Suppression de l'image de l'animal lorsque sa population est décimée
 	public void mortPopulation (Animal a){          
-		if (a.NbTotalAnimaux() == 0){
+		if (a.nbTotalAnimaux() == 0){
 			if (a ==renard){
 				affRenard.setVisible (false); 
 				nombreRenards.setVisible (false);
@@ -227,19 +226,19 @@ public class FenetreLac extends JFrame implements ActionListener {
 		boolean a4 = false;
 		boolean a5 = false; 
 		
-		if ( a.NbTotalAnimaux() == 0 || a.NbTotalAnimaux() == 1000){
+		if ( a.nbTotalAnimaux() == 0 || a.nbTotalAnimaux() == 1000){
 			a1 = true; 
 		}
-		if ( b.NbTotalAnimaux() == 0 || b.NbTotalAnimaux() == 1000){
+		if ( b.nbTotalAnimaux() == 0 || b.nbTotalAnimaux() == 1000){
 			a2 = true; 
 		}
-		if ( c.NbTotalAnimaux() == 0 || c.NbTotalAnimaux() == 1000){
+		if ( c.nbTotalAnimaux() == 0 || c.nbTotalAnimaux() == 1000){
 			a3 = true; 
 		}
-		if ( d.NbTotalAnimaux() == 0 || d.NbTotalAnimaux() == 1000){
+		if ( d.nbTotalAnimaux() == 0 || d.nbTotalAnimaux() == 1000){
 			a4 = true; 
 		}
-		if ( e.NbTotalAnimaux() == 0 || e.NbTotalAnimaux() == 1000){
+		if ( e.nbTotalAnimaux() == 0 || e.nbTotalAnimaux() == 1000){
 			a5 = true; 
 		}
 		if (a1 == true && a2 == true && a3 == true && a4 == true && a5 == true){
@@ -264,11 +263,11 @@ public class FenetreLac extends JFrame implements ActionListener {
 		loutre.changeGeneration(temp,pH,truite);
 		truite.changeGeneration(temp,pH,insecte);
 		insecte.changeGeneration(temp,pH);
-		nombreAigles.setText(""+aigle.NbTotalAnimaux());
-		nombreRenards.setText(""+renard.NbTotalAnimaux());
-		nombreLoutres.setText(""+loutre.NbTotalAnimaux());
-		nombreTruites.setText(""+truite.NbTotalAnimaux());
-		nombreInsectes.setText(""+insecte.NbTotalAnimaux());
+		nombreAigles.setText(""+aigle.nbTotalAnimaux());
+		nombreRenards.setText(""+renard.nbTotalAnimaux());
+		nombreLoutres.setText(""+loutre.nbTotalAnimaux());
+		nombreTruites.setText(""+truite.nbTotalAnimaux());
+		nombreInsectes.setText(""+insecte.nbTotalAnimaux());
 		
 		mortPopulation(aigle);
 		mortPopulation(renard);
@@ -308,7 +307,7 @@ public class FenetreLac extends JFrame implements ActionListener {
 		if (source == lesBoutons[2]){
 			maFenetreExplication.setVisible(true);
 			
-			if (pH<12){
+			if (pH<10){
 				pH +=1;
 				lepH.setText("pH DU LAC:"+pH);
 			}
@@ -321,7 +320,7 @@ public class FenetreLac extends JFrame implements ActionListener {
 		if (source == lesBoutons[3]) {
 			maFenetreExplication.setVisible(true);
 			
-			if (pH>1){
+			if (pH>3){
 				pH -=1;
 				lepH.setText("pH DU LAC:"+pH);
 			}
