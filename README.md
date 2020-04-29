@@ -153,7 +153,7 @@ public class Animal extends EtreVivant{
 		double mu=0;
 		switch (nom) {
 		case "Aigle":
-		mu=0.02;
+		mu=0.002;
 		break;
 
 		case "Renard":
