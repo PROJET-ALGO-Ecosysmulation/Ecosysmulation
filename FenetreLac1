@@ -65,13 +65,13 @@ public class FenetreLac extends JFrame implements ActionListener {
 		setLayout(null);
 		setResizable(false);
 
-		monConteneur = new JPanel();
+		JPanel monConteneur = new JPanel();
 		monConteneur.setLayout(null);
 		monConteneur.setBounds(0,0,getWidth(),getHeight());
 		monConteneur.setBackground(Color.lightGray);
 		add(monConteneur);
 
-		lac = new JPanel();
+		JPanel lac = new JPanel();
 		lac.setLayout(null);
 		lac.setBounds(50,30,900,500);
 		lac.setBackground(Color.lightGray);
