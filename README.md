@@ -1,10 +1,10 @@
 # Ecosysmulation
-	
+
 	public abstract class EtreVivant {
 
-	protected int dureeVie; //Espérance de vie d'une espèce
-	protected int fecondite; //Donne combien de petits peut avoir un couple
-	protected double coefsurvie; //Chance de survie de survivre l'année suivante
+	protected int dureeVie;//Espérance de vie d'une espèce
+	protected int fecondite;//Donne combien de petits peut avoir un couple
+	protected double coefsurvie;//Chance de survie de survivre l'année suivante
 
 	public EtreVivant(int d, int f, double c) {
 		dureeVie=d;
@@ -12,44 +12,42 @@
 	    coefsurvie=c;
 	}
 
-	public int calculVar(int newval, int valini){ //Calcul la variation de pH ou de température  
+	public int calculVar(int newval, int valini){//Calcul la variation de pH ou de température  
+
 
 	    int var=Math.abs(newval-valini);
 	    return var;
 	}
 
 
-	public double impactTemperature(int temp){ //Modifie le coefsurvie si la température et trop élevée ou trop basse
+	public double impactTemperature(int temp){//Modifie le coefsurvie si la température et trop élevée ou trop basse
+
 
 	    if (temp>30) {
-	    	coefsurvie -= 0.05*calculVar(temp,42);
+	    coefsurvie -= 0.05*calculVar(temp,45);
 	    }
 
-	    if (temp<-5) {
-	  	  coefsurvie -= 0.05*calculVar(temp,-15);
+	    if (temp<5) {
+	    coefsurvie -= 0.05*calculVar(temp,-15);
 	    }
 
-	    /*if (validationcoefsurvie(coefsurvie)){
-	    return coefsurvie;} else{
-	    return 0;}*/
-
-	    return Math.abs(coefsurvie);
+	    return coefsurvie;
 	}
 
 
-	public double impactpH(int valpH){ //Modifie le coefsurvie s'il y a une variation de pH
+	public double impactpH(int valpH){//Modifie le coefsurvie s'il y a une variation de pH
+
 
 	    if ((valpH>8)||(valpH<6)) {
 	    coefsurvie -= 0.05*calculVar(valpH,7);
 	    }
 
-	    return Math.abs(coefsurvie);
+	    return coefsurvie;
 	}
-	
+
 	public abstract void chasse();
 
 	public abstract void surpeche();
-
 
 	public abstract int SurvieBebe ();
 
@@ -66,8 +64,5 @@
 	public abstract void afficheliste();
 
 	public abstract void plafond();
-
-	//public abstract String toString(int nbIte);
-
 
 	}
