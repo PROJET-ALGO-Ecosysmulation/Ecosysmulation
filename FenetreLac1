@@ -4,6 +4,10 @@ import java.awt.event.*;
 import java.awt.Font.*;
 import java.awt.*; 
 
+	/** Cette classe permet d'afficher la simulation et la modification de l'écosystème 
+	 *  selon le choix de l'utilisateur  
+	 */
+	 
 public class FenetreLac extends JFrame implements ActionListener {
 	
 	// création des animaux 
