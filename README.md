@@ -41,21 +41,23 @@
 	}
 	// Explication selon le bouton appuyé par toutes les méthodes suivantes (affBoutonX) 
 	public void affBouton1 (){
-		lesTextes[0].setText("L'augmentation de la temperature entraine : ");
-		lesTextes[1].setText("               - La baisse du niveau des lacs : l'approvisionnement en eau est plus restreint et pour les lacs de plus petite taille cela peut  ");
-		lesTextes[2].setText("                 aller jusqu'a leur disparition");
-		lesTextes[3].setText("               - L'envahissement de certaines especes : dereglement de l'ecosysteme");
-		lesTextes[4].setText("               - Le developpement des algues qui entraine un manque d'oxygene pour les especes marines ");
-		lesTextes[5].setText(" ");
-		lesTextes[6].setText("Les lacs les plus touches : Lac Fracksjon (Suede) :  1,35 °C");					 
-		lesTextes[7].setText("Lac Superieur (Canada, Etats-­Unis) : 1,16 °C  ");
-		lesTextes[8].setText("Reservoir Kangaroo Creek (Australie) : 1,14 °C ");   
+	    lesTextes[0].setText("Au-dessus de 30°C, les animaux supportent moins bien la température.");
+		lesTextes[1].setText("L'augmentation de la temperature entraine : ");
+		lesTextes[2].setText("               - La baisse du niveau des lacs : l'approvisionnement en eau est plus restreint et pour les lacs de plus petite taille cela peut  ");
+		lesTextes[3].setText("                 aller jusqu'a leur disparition");
+		lesTextes[4].setText("               - L'envahissement de certaines especes : dereglement de l'ecosysteme");
+		lesTextes[5].setText("               - Le developpement des algues qui entraine un manque d'oxygene pour les especes marines ");
+		lesTextes[6].setText(" ");
+		lesTextes[7].setText("Les lacs les plus touches : Lac Fracksjon (Suede) :  1,35 °C");					 
+		lesTextes[8].setText("Lac Superieur (Canada, Etats-­Unis) : 1,16 °C  ");
+		lesTextes[9].setText("Reservoir Kangaroo Creek (Australie) : 1,14 °C ");   
 	}
 
 	public void affBouton2 (){
-		lesTextes[0].setText("La diminution de la temperature n'est pas un phenomene realiste : ");
-		lesTextes[1].setText("Les rapports actuels envisagent plutot une augmentation de la temperature des lacs ");
-		lesTextes[2].setText("proportionnellement a l'augmentation de la temperature de l'air.");
+	    lesTextes[0].setText("En-dessous de 5°C, les animaux supportent moins bien la température.");
+		lesTextes[1].setText("La diminution de la temperature n'est pas un phenomene realiste : ");
+		lesTextes[2].setText("Les rapports actuels envisagent plutot une augmentation de la temperature des lacs ");
+		lesTextes[3].setText("proportionnellement a l'augmentation de la temperature de l'air.");
 
 	}
 
