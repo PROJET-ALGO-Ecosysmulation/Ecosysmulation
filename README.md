@@ -24,19 +24,19 @@ public class Animal extends EtreVivant{
 
 		switch (nom) {
 		case "Aigle":
-		nb=10;
+		nb=6;
 		break;
 
 		case "Renard":
-		nb=24;
+		nb=15;
 		break;
 
 		case "Loutre":
-		nb=24;
+		nb=15;
 		break;
 
 		case "Truite":
-		nb=40;
+		nb=25;
 		break;
 
 		case "Insecte":
