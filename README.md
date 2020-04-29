@@ -1,4 +1,6 @@
 # Ecosysmulation
+/** Cette méthode permet de définir un animal, initialiser sa population, pose les principes de base de l'évolution de la population, et *il y a quelques méthode permettant d'altérer une population animal
+*/	
 	import java.util.LinkedList;
 
 	public class Animal extends EtreVivant{
@@ -7,18 +9,18 @@
 	private int [] popAnimal; // tableau avec nb d'animaux selon âge (allant de 0 à durée de vie d'un animal)
 	private double surviebb; //pourcentage de bébés qui survivent de l'âge 0 à l'âge 1
 	private LinkedList <Integer> listeNbAn;// liste du nombre total d'animaux à chaque génération
-	private int generation=0;
+	private int generation=0; //permet de savoir à quelle génération on est
 	//private final static String POPFIN = "Insecte" ;
 
 
-	public Animal (String n,int d, int f, double c, double s) {
+	public Animal (String n,int d, int f, double c, double s) { 
 		super(d,f,c);
 		nom=n;
 		surviebb=s;
 
 	    this.popAnimal=new int [d];
 
-	int multip=1;
+	/*int multip=1;
 	int add=1;
 	int nb=1;
 
@@ -54,12 +56,12 @@
 		break;
 
 
-	}
+	}*/
 
-	    for(int j=0; j<popAnimal.length; j++){
+	    for(int j=0; j<popAnimal.length; j++){ //initialisation du tableau à zéro
 			popAnimal[j]=0;
 	    }
-	    popAnimal[1]=nb;
+	    popAnimal[1]=nb; //On initialize la case des animaux âgés de 1 an à un nombre que nous avons choisi
 
 
 	    /*for(int j=0; j<popAnimal.length; j++){
@@ -70,7 +72,7 @@
 
 
 
-	    this.listeNbAn = new LinkedList <Integer>();
+	    this.listeNbAn = new LinkedList <Integer>(); //initialisation du tableau contenant le nombre total d'animaux de chaque espèce
 	    listeNbAn.add(NbTotalAnimaux());
 
 	}
@@ -80,7 +82,7 @@
 
 	}*/
 
-	public void afficheliste(){
+	public void afficheliste(){ //permet d'afficher le nombre total d'individu de chaque espèce
 	    for (int i=0; i<listeNbAn.size();i++){
 		System.out.print("Population totale "+i+" : "+listeNbAn.get(i));
 		System.out.println();
@@ -88,16 +90,16 @@
 	    }
 	}
 
-
-	public int SurvieBebe (){
+	//permet de calculer le nombre de bébés passant à l'âge adulte (1 an)
+	public int SurvieBebe (){ 
 		double res = popAnimal[0]*surviebb;
 		int bbsurvie = (int)res;
 
 	return bbsurvie;
 	}
 
-	public int NbAnimauxReproducteurs (){
-		int sumAnAd = 0;//Animaux pouvant s'accoupler
+	public int NbAnimauxReproducteurs (){ //permet de caculer le nombre d'animaux reproducteurs (animaux âgés de plus d'un an (1 an compris))
+		int sumAnAd = 0; //Animaux pouvant s'accoupler
 
 	    for(int j=1; j<popAnimal.length; j++){
 		    sumAnAd += popAnimal[j];
@@ -109,7 +111,7 @@
 	    return nbAnRep; 
 	}
 
-	public void changeGeneration (int temp, int pH, Animal animalmange) {
+	public void changeGeneration (int temp, int pH, Animal animalmange) { //permet de passer à la géération suivante en prenant en 											compte toutes les méthodes pouvant altérer la population
 
 	    generation +=1;
 	    listeNbAn.add(NbTotalAnimaux());
@@ -118,16 +120,16 @@
 		int b=1;
 
 		coefsurvie=super.impactTemperature(temp);
-		plafond();
+		plafond(); //permet de ne pas dépasser une valeur seuil (1 000 individus) 
 		coefsurvie=super.impactpH(pH);
 		plafond();
 		this.mange(animalmange);
 		plafond();
 
 	    popAnimal[1]=SurvieBebe();
-	    popAnimal[0]=fecondite*NbAnimauxReproducteurs();
+	    popAnimal[0]=fecondite*NbAnimauxReproducteurs(); //calcul le nombre de bébés en fonction de nombre d'animaux reproducteurs
 
-	    //Application du coefsurvie
+	    //Application du coefsurvie et gai d'une année de tous les animaux d'un an ou plus
 		for(int h=2; h<popAnimal.length; h++){
 		b=popAnimal[h];
 		double m= a*coefsurvie;
@@ -143,10 +145,10 @@
 		    } 
 		}
 
-	    regulation();
+	    regulation(); //permet de réguler la population pour qu'il n'y ait pas trop d'individu
 	}
 
-	public void changeGeneration (int temp, int pH) { // changegeneration pour le dernier animal de la chaine alimentaire
+	public void changeGeneration (int temp, int pH) { // changeGeneration pour le dernier animal de la chaine alimentaire
 	    generation +=1;
 	    listeNbAn.add(NbTotalAnimaux());
 
@@ -180,7 +182,7 @@
 	    regulation();
 	}
 
-	public void regulation() {
+	public void regulation() {//défini les coefficients de régulation pour chaque animal
 
 	    double mu=0;
 	    switch (nom) {
@@ -203,8 +205,6 @@
 	    case "Insecte":
 		mu=0;
 		break;
-
-
 	    }
 
 
