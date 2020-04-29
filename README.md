@@ -1,6 +1,7 @@
 # Ecosysmulation
 /** Cette méthode permet de définir un animal, initialiser sa population, pose les principes de base de l'évolution de la population, et *il y a quelques méthode permettant d'altérer une population animal
 */	
+	
 	import java.util.LinkedList;
 
 	public class Animal extends EtreVivant{
