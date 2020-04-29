@@ -55,11 +55,11 @@ public class FenetreLac extends JFrame implements ActionListener {
 		super("                                   Modelisation du lac");
 		
 		//création de chaque population d'animaux
-		aigle = new Animal ("Aigle", 25,1,0.9,0.7  );
+		aigle = new Animal ("Aigle",25,2,0.9,1);
 		renard = new Animal("Renard",5,7,0.9,0.2);
-		loutre = new Animal("Loutre",8,2,0.9,0.5);
-		truite = new Animal ("Truite",10,25,0.9,0.7 );
-		insecte = new Animal ("Insecte",10,25,0.9,0.7 );
+		loutre = new Animal("Loutre",8,2,0.9,0.7);
+		truite = new Animal ("Truite",10,5,0.6,0.6);
+		insecte = new Animal ("Insecte",10,25,0.9,0.7);
 
 		setBounds(50,50,1000,800);
 		setLayout(null);
