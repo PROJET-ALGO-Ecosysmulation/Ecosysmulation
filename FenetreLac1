@@ -7,7 +7,6 @@ import java.awt.*;
 	/** Cette classe permet d'afficher la simulation et la modification de l'écosystème 
 	 *  selon le choix de l'utilisateur  
 	 */
-	 
 public class FenetreLac extends JFrame implements ActionListener {
 	
 	// création des animaux 
@@ -24,6 +23,8 @@ public class FenetreLac extends JFrame implements ActionListener {
 	int ani4;
 	int ani5;
 
+	JPanel lac; // Conteneur contenant le lac 
+	JPanel monConteneur;
 	JLabel affPanneau;
 	boolean panneauSurpeche;  //pour gérer l'affichage du panneau interdiction peche
 	
@@ -66,13 +67,13 @@ public class FenetreLac extends JFrame implements ActionListener {
 		setLayout(null);
 		setResizable(false);
 
-		JPanel monConteneur = new JPanel();
+		monConteneur = new JPanel();
 		monConteneur.setLayout(null);
 		monConteneur.setBounds(0,0,getWidth(),getHeight());
 		monConteneur.setBackground(Color.lightGray);
 		add(monConteneur);
 
-		JPanel lac = new JPanel();
+		lac = new JPanel();
 		lac.setLayout(null);
 		lac.setBounds(50,30,900,500);
 		lac.setBackground(Color.lightGray);
@@ -194,7 +195,7 @@ public class FenetreLac extends JFrame implements ActionListener {
 	}
 	
 	// Suppression de l'image de l'animal lorsque sa population est décimée
-	public void mortPopulation (Animal a){          
+	public void MortPopulation (Animal a){          
 		if (a.NbTotalAnimaux() == 0){
 			if (a ==renard){
 				affRenard.setVisible (false); 
@@ -216,6 +217,34 @@ public class FenetreLac extends JFrame implements ActionListener {
 				affTruite.setVisible (false); 
 				nombreTruites.setVisible (false);
 			}
+		}
+	}
+	
+	// Indication de la fin de la simulation 
+	public void FinSimulation (Animal a, Animal b, Animal c, Animal d, Animal e){
+		boolean a1 = false;
+		boolean a2 = false;
+		boolean a3 = false;
+		boolean a4 = false;
+		boolean a5 = false; 
+		
+		if ( a.NbTotalAnimaux() == 0 || a.NbTotalAnimaux() == 1000){
+			a1 = true; 
+		}
+		if ( b.NbTotalAnimaux() == 0 || b.NbTotalAnimaux() == 1000){
+			a2 = true; 
+		}
+		if ( c.NbTotalAnimaux() == 0 || c.NbTotalAnimaux() == 1000){
+			a3 = true; 
+		}
+		if ( d.NbTotalAnimaux() == 0 || d.NbTotalAnimaux() == 1000){
+			a4 = true; 
+		}
+		if ( e.NbTotalAnimaux() == 0 || e.NbTotalAnimaux() == 1000){
+			a5 = true; 
+		}
+		if (a1 == true && a2 == true && a3 == true && a4 == true && a5 == true){
+			JOptionPane.showMessageDialog(this,"FIN DE LA SIMULATION");
 		}
 	}
 	
@@ -242,11 +271,13 @@ public class FenetreLac extends JFrame implements ActionListener {
 		nombreTruites.setText(""+truite.NbTotalAnimaux());
 		nombreInsectes.setText(""+insecte.NbTotalAnimaux());
 		
-		mortPopulation(aigle);
-		mortPopulation(renard);
-		mortPopulation(loutre);
-		mortPopulation(insecte);
-		mortPopulation(truite);
+		MortPopulation(aigle);
+		MortPopulation(renard);
+		MortPopulation(loutre);
+		MortPopulation(insecte);
+		MortPopulation(truite);
+		
+		FinSimulation (aigle, renard, loutre, truite, insecte);
 		
 		maFenetreExplication.setVisible(false);
 		
@@ -293,6 +324,7 @@ public class FenetreLac extends JFrame implements ActionListener {
 			
 			if (pH>3){
 				pH -=1;
+				lepH.setText("pH DU LAC:"+pH);
 			}
 			if (pH<=1){
 				JOptionPane.showMessageDialog(this,"Vous avez atteint le pH minimal");
