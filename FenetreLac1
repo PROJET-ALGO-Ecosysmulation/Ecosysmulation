@@ -307,7 +307,7 @@ public class FenetreLac extends JFrame implements ActionListener {
 		if (source == lesBoutons[2]){
 			maFenetreExplication.setVisible(true);
 			
-			if (pH<10){
+			if (pH<12){
 				pH +=1;
 				lepH.setText("pH DU LAC:"+pH);
 			}
@@ -320,7 +320,7 @@ public class FenetreLac extends JFrame implements ActionListener {
 		if (source == lesBoutons[3]) {
 			maFenetreExplication.setVisible(true);
 			
-			if (pH>3){
+			if (pH>1){
 				pH -=1;
 				lepH.setText("pH DU LAC:"+pH);
 			}
