@@ -6,11 +6,13 @@ import java.awt.*;
 
 public class FenetreLac extends JFrame implements ActionListener {
 	
-	Animal Aigle;
-	Animal Renard;
-	Animal Loutre;
-	Animal Truite; 
-	Animal Insecte;
+	// création des animaux 
+	Animal aigle;
+	Animal renard;
+	Animal loutre;
+	Animal truite; 
+	Animal insecte;
+	
 	// nombre d'animaux classés selon la chaîne alimentaire
 	int ani1; 
 	int ani2;
@@ -20,22 +22,28 @@ public class FenetreLac extends JFrame implements ActionListener {
 
 	JLabel affPanneau;
 	boolean panneauSurpeche;  //pour gérer l'affichage du panneau interdiction peche
+	
+	// affichage des animaux 
 	JLabel affRenard;
 	JLabel affTruite;
 	JLabel affLoutre; 
 	JLabel affInsecte; 
-	JLabel affAigle;  
+	JLabel affAigle; 
+	
+	//affichage du nombre d'individus par expèce 
 	JLabel nombreAigles;
 	JLabel nombreRenards;
 	JLabel nombreTruites;
 	JLabel nombreLoutres;
 	JLabel nombreInsectes;
+	
 	JLabel temperature;
 	JLabel lepH;
 	JButton[] lesBoutons;
 	
-	int temp;
-	int pH;
+	int temp;   //température modifié par l'utilisateur 
+	int pH;		//pH modifié par l'utilisateur 
+	
 	FenetreExplication maFenetreExplication;
 	FenetreRegles maFenetreRegles;
 
@@ -44,11 +52,11 @@ public class FenetreLac extends JFrame implements ActionListener {
 		super("                                                                 Modelisation du lac");
 		
 		//création de chaque population d'animaux
-		Aigle = new Animal ("Aigle", 25,1,0.9,0.7  );
-		Renard = new Animal("Renard",5,7,0.9,0.2);
-		Loutre = new Animal("Loutre",8,2,0.9,0.5);
-		Truite = new Animal ("Truite",10,25,0.9,0.7 );
-		Insecte = new Animal ("Insecte",10,25,0.9,0.7 );
+		aigle = new Animal ("Aigle", 25,1,0.9,0.7  );
+		renard = new Animal("Renard",5,7,0.9,0.2);
+		loutre = new Animal("Loutre",8,2,0.9,0.5);
+		truite = new Animal ("Truite",10,25,0.9,0.7 );
+		insecte = new Animal ("Insecte",10,25,0.9,0.7 );
 
 		setBounds(50,50,1000,800);
 		setLayout(null);
@@ -112,36 +120,36 @@ public class FenetreLac extends JFrame implements ActionListener {
 		lac.add(affInsecte);
 
 		//placement des étiquettes indiquant le nombre d'animaux dans chaque population
-		ani1 = Aigle.NbTotalAnimaux();
-		ani2 = Renard.NbTotalAnimaux();
-		ani3 = Loutre.NbTotalAnimaux();
-		ani4= Truite.NbTotalAnimaux();
-		ani5= Insecte.NbTotalAnimaux();
+		ani1 = aigle.NbTotalAnimaux();
+		ani2 = renard.NbTotalAnimaux();
+		ani3 = loutre.NbTotalAnimaux();
+		ani4= truite.NbTotalAnimaux();
+		ani5= insecte.NbTotalAnimaux();
 		nombreAigles = new JLabel();
 		Font police = new Font(" Arial ",Font.BOLD,20);
 		nombreAigles.setFont(police);
 		nombreAigles.setText(""+ani1);
-		nombreAigles.setBounds(280,10,50,50);
+		nombreAigles.setBounds(280,10,100,100);
 		lac.add(nombreAigles);
 		nombreRenards = new JLabel();
 		nombreRenards.setFont(police);
 		nombreRenards.setText(""+ani2);
-		nombreRenards.setBounds(150,300,50,50);
+		nombreRenards.setBounds(150,300,100,100);
 		lac.add(nombreRenards);
 		nombreLoutres = new JLabel();
 		nombreLoutres.setFont(police);
 		nombreLoutres.setText(""+ani3);
-		nombreLoutres.setBounds(480,430,50,50);
+		nombreLoutres.setBounds(480,430,100,100);
 		lac.add(nombreLoutres);
 		nombreTruites = new JLabel();
 		nombreTruites.setFont(police);
 		nombreTruites.setText(""+ani4);
-		nombreTruites.setBounds(630,270,50,50);
+		nombreTruites.setBounds(630,270,100,100);
 		lac.add(nombreTruites);
 		nombreInsectes = new JLabel();
 		nombreInsectes.setFont(police);
 		nombreInsectes.setText(""+ani5);
-		nombreInsectes.setBounds(90,450,50,50);
+		nombreInsectes.setBounds(90,450,100,100);
 		lac.add(nombreInsectes);
 
 		//Affichage température
@@ -184,23 +192,23 @@ public class FenetreLac extends JFrame implements ActionListener {
 	// Suppression de l'image de l'animal lorsque sa population est décimée
 	public void mortPopulation (Animal a){          
 		if (a.NbTotalAnimaux() == 0){
-			if (a ==Renard){
+			if (a ==renard){
 				affRenard.setVisible (false); 
 				nombreRenards.setVisible (false);
 				
-			}else if (a ==Aigle){
+			}else if (a ==aigle){
 				affAigle.setVisible (false); 
 				nombreAigles.setVisible (false);
 				
-			}else if (a ==Loutre){
+			}else if (a ==loutre){
 				affLoutre.setVisible (false); 
 				nombreLoutres.setVisible (false);
 				
-			}else if (a ==Insecte){
+			}else if (a ==insecte){
 				affInsecte.setVisible (false); 
 				nombreInsectes.setVisible (false);
 				
-			}else if (a ==Truite){
+			}else if (a ==truite){
 				affTruite.setVisible (false); 
 				nombreTruites.setVisible (false);
 			}
@@ -212,33 +220,33 @@ public class FenetreLac extends JFrame implements ActionListener {
 		
 		Object source = e.getSource();
 			
-		// permet de fermer la fenetre d'explication des regles si l'utilsateur commence la simulation sans avoir appuyé sur Ok j'ai lu les consignes
+		// permet de fermer la fenetre d'explication des règles si l'utilsateur commence la simulation sans avoir appuyé sur Ok j'ai lu les consignes
 		maFenetreRegles.setVisible(false);
 		
 		// permet de supprimer les explications si l'utilisateur n'a pas appuyé sur j'ai compris
 		maFenetreExplication.supprimerText();
 
 		// changement de generation des que l'on appuie sur un bouton	
-		Aigle.changeGeneration(temp,pH,Renard);         
-		Renard.changeGeneration(temp,pH,Loutre);
-		Loutre.changeGeneration(temp,pH,Truite);
-		Truite.changeGeneration(temp,pH,Insecte);
-		Insecte.changeGeneration(temp,pH);
-		nombreAigles.setText(""+Aigle.NbTotalAnimaux());
-		nombreRenards.setText(""+Renard.NbTotalAnimaux());
-		nombreLoutres.setText(""+Loutre.NbTotalAnimaux());
-		nombreTruites.setText(""+Truite.NbTotalAnimaux());
-		nombreInsectes.setText(""+Insecte.NbTotalAnimaux());
+		aigle.changeGeneration(temp,pH,renard);         
+		renard.changeGeneration(temp,pH,loutre);
+		loutre.changeGeneration(temp,pH,truite);
+		truite.changeGeneration(temp,pH,insecte);
+		insecte.changeGeneration(temp,pH);
+		nombreAigles.setText(""+aigle.NbTotalAnimaux());
+		nombreRenards.setText(""+renard.NbTotalAnimaux());
+		nombreLoutres.setText(""+loutre.NbTotalAnimaux());
+		nombreTruites.setText(""+truite.NbTotalAnimaux());
+		nombreInsectes.setText(""+insecte.NbTotalAnimaux());
 		
-		mortPopulation(Aigle);
-		mortPopulation(Renard);
-		mortPopulation(Loutre);
-		mortPopulation(Insecte);
-		mortPopulation(Truite);
+		mortPopulation(aigle);
+		mortPopulation(renard);
+		mortPopulation(loutre);
+		mortPopulation(insecte);
+		mortPopulation(truite);
 		
 		maFenetreExplication.setVisible(false);
 		
-		// changement du paramètre correspondant au bonton sur lequel l'utilisateur a apppuyé et affichage de l'explication
+		// changement du paramètre correspondant au bouton sur lequel l'utilisateur a apppuyé et affichage de l'explication
 		if (source == lesBoutons[0]) {
 			maFenetreExplication.setVisible(true);
 			if (temp<45){
@@ -288,9 +296,14 @@ public class FenetreLac extends JFrame implements ActionListener {
 			maFenetreExplication.affBouton4();
 		}
 
+
+		if (source == lesBoutons[4]) {
+		
+		}
+
 		if (source == lesBoutons[5])  {
 			maFenetreExplication.setVisible(true);
-			Truite.surpeche();
+			truite.surpeche();
 			affPanneau.setVisible(panneauSurpeche);
 			if(panneauSurpeche==false)
 				lesBoutons[5].setText("Arreter Surpeche");
@@ -302,9 +315,8 @@ public class FenetreLac extends JFrame implements ActionListener {
 	 
 		if (source == lesBoutons[6])  {
 			maFenetreExplication.setVisible(true);
-			Renard.chasse();
+			renard.chasse();
 			maFenetreExplication.affBouton6();
 		}
 	}
  }
-
