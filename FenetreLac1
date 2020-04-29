@@ -288,11 +288,6 @@ public class FenetreLac extends JFrame implements ActionListener {
 			maFenetreExplication.affBouton4();
 		}
 
-
-		if (source == lesBoutons[4]) {
-		
-		}
-
 		if (source == lesBoutons[5])  {
 			maFenetreExplication.setVisible(true);
 			Truite.surpeche();
