@@ -23,8 +23,6 @@ public class FenetreLac extends JFrame implements ActionListener {
 	int ani4;
 	int ani5;
 
-	JPanel lac; // Conteneur contenant le lac 
-	JPanel monConteneur;
 	JLabel affPanneau;
 	boolean panneauSurpeche;  //pour gérer l'affichage du panneau interdiction peche
 	
